@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Damato_App.DataBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,7 @@ namespace Damato_App
         public Form1()
         {
             InitializeComponent();
-            panelWidth = 239;
+            panelWidth = 150;
             Hidden = false;
         }
 
@@ -57,12 +58,12 @@ namespace Damato_App
 
         private void panel3_DragDrop(object sender, DragEventArgs e)
         {
-            //string[] FileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            string[] FileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
-            //File file = new File()
-            //{
-            //    Path = FileList.FirstOrDefault()
-            //};
+            File file = new File()
+            {
+                Path = FileList.FirstOrDefault()
+            };
 
             //// 
             //// fileDisplay1
@@ -87,6 +88,27 @@ namespace Damato_App
                 e.Effect = DragDropEffects.Copy;
             else
                 e.Effect = DragDropEffects.None;
+        }
+
+        private bool tempText = true;
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            tempText = false;
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() == "")
+                tempText = true;
+            if (tempText)
+                textBox1.Text = "Search DAM";
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (tempText)
+                textBox1.Text = "";
         }
     }
 }

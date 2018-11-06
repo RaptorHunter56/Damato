@@ -43,10 +43,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.PanelSlide = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dragControl1 = new Damato_App.UserControls.DragControl();
+            this.dragControl2 = new Damato_App.UserControls.DragControl();
+            this.dragControl3 = new Damato_App.UserControls.DragControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -199,32 +203,59 @@
             // PanelSlide
             // 
             this.PanelSlide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.PanelSlide.Controls.Add(this.treeView1);
             this.PanelSlide.Controls.Add(this.textBox1);
             this.PanelSlide.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelSlide.Location = new System.Drawing.Point(43, 34);
             this.PanelSlide.Name = "PanelSlide";
-            this.PanelSlide.Size = new System.Drawing.Size(239, 419);
+            this.PanelSlide.Size = new System.Drawing.Size(150, 419);
             this.PanelSlide.TabIndex = 2;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.treeView1.Indent = 25;
+            this.treeView1.ItemHeight = 15;
+            this.treeView1.LineColor = System.Drawing.Color.White;
+            this.treeView1.Location = new System.Drawing.Point(7, 41);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Scrollable = false;
+            this.treeView1.ShowLines = false;
+            this.treeView1.ShowNodeToolTips = true;
+            this.treeView1.ShowPlusMinus = false;
+            this.treeView1.Size = new System.Drawing.Size(135, 366);
+            this.treeView1.TabIndex = 2;
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.DarkGray;
-            this.textBox1.Location = new System.Drawing.Point(9, 16);
+            this.textBox1.Location = new System.Drawing.Point(7, 16);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 19);
+            this.textBox1.Size = new System.Drawing.Size(135, 19);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Search DAM";
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(282, 34);
+            this.panel4.Location = new System.Drawing.Point(193, 34);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(474, 419);
+            this.panel4.Size = new System.Drawing.Size(563, 419);
             this.panel4.TabIndex = 3;
             // 
             // panel3
@@ -236,7 +267,7 @@
             this.panel3.AutoScroll = true;
             this.panel3.Location = new System.Drawing.Point(6, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(465, 410);
+            this.panel3.Size = new System.Drawing.Size(554, 410);
             this.panel3.TabIndex = 0;
             this.panel3.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel3_DragDrop);
             this.panel3.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel3_DragEnter);
@@ -245,6 +276,18 @@
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // dragControl1
+            // 
+            this.dragControl1.SelectControl = this.panel1;
+            // 
+            // dragControl2
+            // 
+            this.dragControl2.SelectControl = this.label1;
+            // 
+            // dragControl3
+            // 
+            this.dragControl3.SelectControl = this.pictureBox1;
             // 
             // Form1
             // 
@@ -292,6 +335,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
+        private UserControls.DragControl dragControl1;
+        private UserControls.DragControl dragControl2;
+        private UserControls.DragControl dragControl3;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 
