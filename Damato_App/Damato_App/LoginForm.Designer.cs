@@ -38,6 +38,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -74,9 +75,11 @@
             this.button8.Location = new System.Drawing.Point(194, 0);
             this.button8.Margin = new System.Windows.Forms.Padding(5);
             this.button8.Name = "button8";
+            this.button8.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.button8.Size = new System.Drawing.Size(24, 24);
             this.button8.TabIndex = 2;
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -90,6 +93,7 @@
             this.button7.Size = new System.Drawing.Size(24, 24);
             this.button7.TabIndex = 1;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label1
             // 
@@ -155,11 +159,25 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Password";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.checkBox1.Location = new System.Drawing.Point(99, 99);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox1.Size = new System.Drawing.Size(119, 22);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Keep Loged In";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(242, 100);
+            this.ClientSize = new System.Drawing.Size(242, 129);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
@@ -190,5 +208,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

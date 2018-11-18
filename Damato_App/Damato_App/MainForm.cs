@@ -1,4 +1,6 @@
 ﻿using Damato_App.DataBase;
+using Damato_App.Settings;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +17,14 @@ namespace Damato_App
     {
         int panelWidth;
         bool Hidden;
+        public ApplicationSettings ApplicationSettings;
         public MainForm()
         {
             InitializeComponent();
             panelWidth = 150;
             Hidden = false;
+            string json = System.IO.File.ReadAllText("ApplicationSettings.json");
+            ApplicationSettings = JsonConvert.DeserializeObject<ApplicationSettings>(json);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,6 +59,11 @@ namespace Damato_App
         private void button7_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void panel3_DragDrop(object sender, DragEventArgs e)
