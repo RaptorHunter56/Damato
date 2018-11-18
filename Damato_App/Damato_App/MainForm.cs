@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Damato_App
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         int panelWidth;
         bool Hidden;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             panelWidth = 150;
