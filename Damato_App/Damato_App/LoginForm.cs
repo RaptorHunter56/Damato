@@ -34,8 +34,15 @@ namespace Damato_App
             temp2Text = false;
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
-                Login();
+                if (applicationSettings.LoginSettings.UserName == textBox1.Text && applicationSettings.LoginSettings.password == textBox2.Text)
+                {
+                    UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
+                    Login();
+                }
+                else
+                {
+                    label4.Visible = true;
+                }
             }
         }
 
@@ -48,7 +55,11 @@ namespace Damato_App
             MainForm main = new MainForm();
             this.Hide();
             main.ShowDialog();
-            this.Show();
+            try
+            {
+                this.Show();
+            }
+            catch { }
             textBox1.Enabled = true;
             textBox2.Enabled = true;
         }

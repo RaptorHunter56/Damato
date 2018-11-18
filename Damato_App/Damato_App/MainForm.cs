@@ -1,5 +1,6 @@
 ﻿using Damato_App.DataBase;
 using Damato_App.Settings;
+using Damato_App.UserControls;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -119,6 +120,12 @@ namespace Damato_App
         {
             if (tempText)
                 textBox1.Text = "";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            panel3.Controls.Clear();
+            panel3.Controls.Add(new SettingsControl(ApplicationSettings) { Dock = DockStyle.Fill });
         }
     }
 }
