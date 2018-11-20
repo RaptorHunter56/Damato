@@ -36,7 +36,8 @@
     <StartupObject>Damato_App.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icons8_Tomato_2.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -95,6 +96,12 @@
     <Compile Include="UserControls\DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\FileImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FileImage.Designer.cs">
+      <DependentUpon>FileImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +129,9 @@
     <EmbeddedResource Include="UserControls\CheckTreeView.resx">
       <DependentUpon>CheckTreeView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FileImage.resx">
+      <DependentUpon>FileImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SettingsControl.resx">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,7 +150,88 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icons8_Tomato_2.ico" />
+    <None Include="img\FileType\rar.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\tar.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\tif.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\ttf.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\txt.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\wav.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\wma.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\woff.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\zip.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\ppt.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\psd.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\jp2.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\jpg.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\kml.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\kmz.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\mov.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\mp3.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\mpg.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\nmea.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\ogg.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\osm.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\otf.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\gif.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\gis.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\gpx.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\html.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\`File.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="img\FileType\%40default.Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

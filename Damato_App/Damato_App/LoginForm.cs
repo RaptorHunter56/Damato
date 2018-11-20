@@ -18,8 +18,12 @@ namespace Damato_App
         public LoginForm()
         {
             InitializeComponent();
-            string json = File.ReadAllText("ApplicationSettings.json");
-            applicationSettings = JsonConvert.DeserializeObject<ApplicationSettings>(json);
+            try
+            {
+                string json = File.ReadAllText("ApplicationSettings.json");
+                applicationSettings = JsonConvert.DeserializeObject<ApplicationSettings>(json);
+            }
+            catch { applicationSettings = new ApplicationSettings() { LoginSettings = new LoginSettings()}; }
             if (applicationSettings.LoginSettings.KeepLogdIn)
             {
                 UpdateLogin(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.password, applicationSettings.LoginSettings.KeepLogdIn);
@@ -43,6 +47,8 @@ namespace Damato_App
                 {
                     label4.Visible = true;
                 }
+                //First Time Fix
+                //UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
             }
         }
 

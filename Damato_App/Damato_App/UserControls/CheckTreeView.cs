@@ -22,7 +22,6 @@ namespace Damato_App.UserControls
             checkBox.Dock = System.Windows.Forms.DockStyle.Top;
             checkBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             checkBox.Location = new System.Drawing.Point(5, 0);
-            checkBox.Name = "checkBox2";
             checkBox.Size = new System.Drawing.Size(164, 17);
             checkBox.TabIndex = 2;
             checkBox.Text = text;
@@ -36,25 +35,38 @@ namespace Damato_App.UserControls
         public CheckTreeView()
         {
             InitializeComponent();
+            subcategoryChatch = new List<string>();
         }
 
-        public string Category { get { return checkBox1.Text; } set { checkBox1.Text = value; } }
-        [Editor(typeof(MyStringCollectionEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public string Category { get { return label1.Text; } set { label1.Text = value; } }
+
+        [Editor("System.Windows.Forms.Design.StringCollectionEditor, System.Design", "System.Drawing.Design.UITypeEditor, System.Drawing")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<string> Subcategory
+        public List<string> Subcategory { get { return subcategoryChatch; } set { subcategoryChatch = value; } }
+
+        private void UpdateSub()
         {
-            get
-            {
-                List<string> vs = new List<string>();
-                foreach (var item in subcategory) { vs.Add(item.ToString()); }
-                return vs;
-            }
-            set
-            {
-                subcategory.Clear();
-                foreach (var item in value) { subcategory.Add(newCheckBox(item)); }
-            }
+            List<CheckBox> boxes = new List<CheckBox>();
+            foreach (var item in subcategoryChatch) { boxes.Add(newCheckBox(item)); }
+            subcategory = boxes;
         }
+
+        private List<string> subcategoryChatch { get; set; }
+        //{
+        //    get
+        //    {
+        //        List<string> vs = new List<string>();
+        //        foreach (var item in subcategory) { vs.Add(item.Text); }
+        //        return vs;
+        //    }
+        //    set
+        //    {
+        //        List<CheckBox> boxes = new List<CheckBox>();
+        //        foreach (var item in value) { boxes.Add(newCheckBox(item)); }
+        //        subcategory = boxes;
+        //    }
+        //}
+
         private List<CheckBox> subcategory
         {
             get
@@ -65,6 +77,7 @@ namespace Damato_App.UserControls
             }
             set
             {
+                panel1.Controls.Clear();
                 foreach (var item in value) { panel1.Controls.Add(item); }
             }
         }
@@ -76,16 +89,25 @@ namespace Damato_App.UserControls
                 if (checkBox1.Checked)
                     subcategory[i].Checked = true;
                 else
-                    subcategory[i].Checked = true;
+                    subcategory[i].Checked = false;
             }
         }
-    }
 
-    public class MyStringCollectionEditor : System.ComponentModel.Design.CollectionEditor
-    {
-        public MyStringCollectionEditor() : base(type: typeof(List<String>)) { }
-        protected override object CreateInstance(Type itemType) {
-            return string.Empty;
+        private void CheckTreeView_Load(object sender, EventArgs e)
+        {
+            UpdateSub();
+        }
+        private bool VisibleSub = true;
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            VisibleSub = !VisibleSub;
+            for (int i = 0; i <= (subcategory.Count - 1); i++)
+            {
+                if (checkBox1.Checked)
+                    subcategory[i].Visible = VisibleSub;
+                else
+                    subcategory[i].Visible = VisibleSub;
+            }
         }
     }
 }
