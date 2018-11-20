@@ -43,11 +43,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.PanelSlide = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.dragControl1 = new Damato_App.UserControls.DragControl();
             this.dragControl2 = new Damato_App.UserControls.DragControl();
             this.dragControl3 = new Damato_App.UserControls.DragControl();
@@ -56,13 +57,13 @@
             this.panel2.SuspendLayout();
             this.PanelSlide.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -87,11 +88,11 @@
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
             this.button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button8.Location = new System.Drawing.Point(688, 0);
+            this.button8.Location = new System.Drawing.Point(14, 1);
             this.button8.Margin = new System.Windows.Forms.Padding(5);
             this.button8.Name = "button8";
             this.button8.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.button8.Size = new System.Drawing.Size(34, 34);
+            this.button8.Size = new System.Drawing.Size(34, 32);
             this.button8.TabIndex = 2;
             this.button8.UseVisualStyleBackColor = true;
             // 
@@ -101,10 +102,10 @@
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(722, 0);
+            this.button7.Location = new System.Drawing.Point(48, 1);
             this.button7.Margin = new System.Windows.Forms.Padding(5);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(34, 34);
+            this.button7.Size = new System.Drawing.Size(34, 32);
             this.button7.TabIndex = 1;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -203,34 +204,13 @@
             // PanelSlide
             // 
             this.PanelSlide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.PanelSlide.Controls.Add(this.treeView1);
+            this.PanelSlide.Controls.Add(this.panel6);
             this.PanelSlide.Controls.Add(this.textBox1);
             this.PanelSlide.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelSlide.Location = new System.Drawing.Point(43, 34);
             this.PanelSlide.Name = "PanelSlide";
             this.PanelSlide.Size = new System.Drawing.Size(150, 419);
             this.PanelSlide.TabIndex = 2;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.treeView1.Indent = 25;
-            this.treeView1.ItemHeight = 15;
-            this.treeView1.LineColor = System.Drawing.Color.White;
-            this.treeView1.Location = new System.Drawing.Point(7, 41);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Scrollable = false;
-            this.treeView1.ShowLines = false;
-            this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.ShowPlusMinus = false;
-            this.treeView1.Size = new System.Drawing.Size(135, 366);
-            this.treeView1.TabIndex = 2;
             // 
             // textBox1
             // 
@@ -277,6 +257,29 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.button8);
+            this.panel5.Controls.Add(this.button7);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(673, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Padding = new System.Windows.Forms.Padding(1);
+            this.panel5.Size = new System.Drawing.Size(83, 34);
+            this.panel5.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel6.Location = new System.Drawing.Point(7, 41);
+            this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(1);
+            this.panel6.Size = new System.Drawing.Size(128, 375);
+            this.panel6.TabIndex = 1;
+            // 
             // dragControl1
             // 
             this.dragControl1.SelectControl = this.panel1;
@@ -312,6 +315,7 @@
             this.PanelSlide.ResumeLayout(false);
             this.PanelSlide.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -338,7 +342,8 @@
         private UserControls.DragControl dragControl1;
         private UserControls.DragControl dragControl2;
         private UserControls.DragControl dragControl3;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
     }
 }
 
