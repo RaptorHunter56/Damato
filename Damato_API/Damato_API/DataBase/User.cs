@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,9 +18,12 @@ namespace Damato_API.DataBase
         [Index(IsUnique = true)]
         public string Name { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public string PasswordDecrypted { get { return Cipher.Decrypt(Password, "Pa55w0rd"); } set { Password = Cipher.Encrypt(value, "Pa55w0rd"); } }
+        [JsonIgnore]
         public string Password { get; set; }
         public int Level { get; set; }
+        [JsonIgnore]
         public DateTime DateAdded { get; set; }
     }
 }

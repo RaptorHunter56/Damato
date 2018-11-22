@@ -102,6 +102,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Cipher.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\TokensController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DataBase\Context.cs" />
@@ -126,6 +127,14 @@
     <Compile Include="Migrations\201811220853318_Tokens-User_Added.cs" />
     <Compile Include="Migrations\201811220853318_Tokens-User_Added.Designer.cs">
       <DependentUpon>201811220853318_Tokens-User_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811222157597_Files_Added.cs" />
+    <Compile Include="Migrations\201811222157597_Files_Added.Designer.cs">
+      <DependentUpon>201811222157597_Files_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811222200032_Files-User_Added.cs" />
+    <Compile Include="Migrations\201811222200032_Files-User_Added.Designer.cs">
+      <DependentUpon>201811222200032_Files-User_Added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811220853318_Tokens-User_Added.resx">
       <DependentUpon>201811220853318_Tokens-User_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811222157597_Files_Added.resx">
+      <DependentUpon>201811222157597_Files_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811222200032_Files-User_Added.resx">
+      <DependentUpon>201811222200032_Files-User_Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

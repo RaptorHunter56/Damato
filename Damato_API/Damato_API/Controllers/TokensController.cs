@@ -24,11 +24,13 @@ namespace Damato_API.Controllers
             {
                 token = new Token()
                 {
-                    _Token = (DateTime.Now.ToString("fffffffK") + "0000000000").Substring(0, 10),
-                    User = user
+                    _Token = (DateTime.Now.ToString("fffffffK") + "0000000000").Substring(0, 10)
                 };
             } while (TokenExists(token._Token));
             db.Tokens.Add(token);
+            db.SaveChanges();
+            db.Entry(token).Reload();
+            token.User = user;
             db.SaveChanges();
             return token;
         }

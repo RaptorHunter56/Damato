@@ -15,7 +15,7 @@ namespace Damato_API.Controllers
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
-        // GET: api/Users/5
+        // GET: api/Users/GetNewToken
         [HttpPost, Route("GetNewToken")]
         public string GetToken(User user)
         {
