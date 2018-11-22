@@ -228,9 +228,6 @@
     <None Include="img\FileType\html.Image.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\FileType\`File.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="img\FileType\%40default.Image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
