@@ -67,6 +67,7 @@
     <Compile Include="Cipher.cs" />
     <Compile Include="DataBase\Context.cs" />
     <Compile Include="DataBase\File.cs" />
+    <Compile Include="DataBase\User.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,12 +97,6 @@
     <Compile Include="UserControls\DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\FileImage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\FileImage.Designer.cs">
-      <DependentUpon>FileImage.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\SettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,16 +120,52 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControls\CheckTreeView.resx">
       <DependentUpon>CheckTreeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\FileImage.resx">
-      <DependentUpon>FileImage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SettingsControl.resx">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="img\FileType\%40default.Image.png" />
+    <None Include="img\FileType\%40Delete.Image.png" />
+    <None Include="img\FileType\%40Deleted.Image.png" />
+    <None Include="img\FileType\css.Image.png" />
+    <None Include="img\FileType\csv.Image.png" />
+    <None Include="img\FileType\dll.Image.png" />
+    <None Include="img\FileType\dmg.Image.png" />
+    <None Include="img\FileType\doc.Image.png" />
+    <None Include="img\FileType\eps.Image.png" />
+    <None Include="img\FileType\exe.Image.png" />
+    <None Include="img\FileType\flv.Image.png" />
+    <None Include="img\FileType\gif.Image.png" />
+    <None Include="img\FileType\gis.Image.png" />
+    <None Include="img\FileType\gpx.Image.png" />
+    <None Include="img\FileType\html.Image.png" />
+    <None Include="img\FileType\jp2.Image.png" />
+    <None Include="img\FileType\jpg.Image.png" />
+    <None Include="img\FileType\kml.Image.png" />
+    <None Include="img\FileType\kmz.Image.png" />
+    <None Include="img\FileType\mov.Image.png" />
+    <None Include="img\FileType\mp3.Image.png" />
+    <None Include="img\FileType\mpg.Image.png" />
+    <None Include="img\FileType\nmea.Image.png" />
+    <None Include="img\FileType\ogg.Image.png" />
+    <None Include="img\FileType\osm.Image.png" />
+    <None Include="img\FileType\otf.Image.png" />
+    <None Include="img\FileType\png.Image.png" />
+    <None Include="img\FileType\ppt.Image.png" />
+    <None Include="img\FileType\psd.Image.png" />
+    <None Include="img\FileType\rar.Image.png" />
+    <None Include="img\FileType\tar.Image.png" />
+    <None Include="img\FileType\tif.Image.png" />
+    <None Include="img\FileType\ttf.Image.png" />
+    <None Include="img\FileType\txt.Image.png" />
+    <None Include="img\FileType\wav.Image.png" />
+    <None Include="img\FileType\wma.Image.png" />
+    <None Include="img\FileType\woff.Image.png" />
+    <None Include="img\FileType\zip.Image.png" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,85 +181,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\FileType\rar.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\tar.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\tif.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\ttf.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\txt.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\wav.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\wma.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\woff.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\zip.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\ppt.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\psd.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\jp2.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\jpg.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\kml.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\kmz.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\mov.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\mp3.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\mpg.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\nmea.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\ogg.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\osm.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\otf.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\gif.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\gis.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\gpx.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\html.Image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="img\FileType\%40default.Image.png" />
+    <Content Include="img\ico\icons8_Tomato_2.ico" />
+    <Content Include="img\Images\icons8_Delete_32px_1.png" />
+    <Content Include="img\Images\icons8_Document_32px.png" />
+    <Content Include="img\Images\icons8_Load_32px.png" />
+    <Content Include="img\Images\icons8_Menu_32px.png" />
+    <Content Include="img\Images\icons8_Password_32px.png" />
+    <Content Include="img\Images\icons8_Settings_32px.png" />
+    <Content Include="img\Images\icons8_Subtract_32px.png" />
+    <Content Include="img\Images\icons8_User_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

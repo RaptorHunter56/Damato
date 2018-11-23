@@ -38,15 +38,8 @@ namespace Damato_App
             temp2Text = false;
             if (e.KeyCode == Keys.Enter)
             {
-                if (applicationSettings.LoginSettings.UserName == textBox1.Text && applicationSettings.LoginSettings.password == textBox2.Text)
-                {
-                    UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
-                    Login();
-                }
-                else
-                {
-                    label4.Visible = true;
-                }
+                UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
+                Login();
                 //First Time Fix
                 //UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
             }
@@ -58,16 +51,29 @@ namespace Damato_App
         {
             textBox1.Enabled = false;
             textBox2.Enabled = false;
-            MainForm main = new MainForm();
             this.Hide();
-            main.ShowDialog();
-            try
+
+            //label4.Visible = true;
+            this.Cursor = Cursors.WaitCursor;
+            MethodInvoker methodInvokerDelegate = async delegate ()
             {
-                this.Show();
-            }
-            catch { }
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
+                string token = await API.GetNewToken(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.Password);
+                this.Cursor = Cursors.Default;
+                MainForm main = new MainForm(token);
+                main.ShowDialog();
+                try
+                {
+                    this.Show();
+                }
+                catch { }
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+            };
+
+            if (this.InvokeRequired)
+                this.Invoke(methodInvokerDelegate);
+            else
+                methodInvokerDelegate();
         }
 
         private void UpdateLogin(string UserName, string password, bool KeepLogdIn)

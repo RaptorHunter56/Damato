@@ -27,7 +27,11 @@ namespace Damato_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
             IEnumerable<File> files = db.Files.Include(f => f.User).OrderBy(f => f.DateAdded);
-            files = files.Where(f => f.User == _token.User).Take(amount);
+            files = files.Where(f => f.User == _token.User).Reverse().Take(amount);
+            foreach (var item in files)
+            {
+                item.User.Password = "*****";
+            }
             if (files == null)
                 return NotFound();
             return Ok(files);

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Damato_API.DataBase
+namespace Damato_App.DataBase
 {
     public class User
     {
@@ -20,6 +21,7 @@ namespace Damato_API.DataBase
         [NotMapped]
         [JsonIgnore]
         public string PasswordDecrypted { get { return Cipher.Decrypt(Password, "Pa55w0rd"); } set { Password = Cipher.Encrypt(value, "Pa55w0rd"); } }
+        [JsonIgnore]
         public string Password { get; set; }
         public int Level { get; set; }
         [JsonIgnore]

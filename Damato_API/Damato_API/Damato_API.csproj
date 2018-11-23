@@ -103,6 +103,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Cipher.cs" />
     <Compile Include="Controllers\FilesController.cs" />
+    <Compile Include="Controllers\MiscController.cs" />
     <Compile Include="Controllers\TokensController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DataBase\Context.cs" />

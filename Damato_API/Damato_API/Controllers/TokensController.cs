@@ -16,7 +16,7 @@ namespace Damato_API.Controllers
     {
         public Token NewToken(User user)
         {
-            user = db.Users.SingleOrDefault(u => u.Name == user.Name && u.Password == user.Password);
+            user = db.Users.ToList().SingleOrDefault(u => u.Name == user.Name && u.PasswordDecrypted == user.PasswordDecrypted);
             if (user == null)
                 return new Token() { _Token = "NotFound" };
             Token token;
