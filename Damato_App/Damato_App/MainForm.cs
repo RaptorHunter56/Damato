@@ -24,11 +24,11 @@ namespace Damato_App
         public string Token;
         public MainForm(string token)
         {
+            string json = System.IO.File.ReadAllText("ApplicationSettings.json");
+            ApplicationSettings = JsonConvert.DeserializeObject<ApplicationSettings>(json);
             InitializeComponent();
             panelWidth = 150;
             Hidden = false;
-            string json = System.IO.File.ReadAllText("ApplicationSettings.json");
-            ApplicationSettings = JsonConvert.DeserializeObject<ApplicationSettings>(json);
             Token = token.Trim('"');
         }
         public MainForm()
@@ -159,7 +159,8 @@ namespace Damato_App
             this.Cursor = Cursors.WaitCursor;
             MethodInvoker methodInvokerDelegate = async delegate ()
             {
-                List<File> names = await API.GetRecentFiles(Token);
+                List<File> names = await API.GetRecentFiles(Token, ApplicationSettings.SearchSettings.ReturnAmount);
+                names.Reverse();
                 foreach (File item in names)
                 { addtocontrole(item); }
                 this.Cursor = Cursors.Default;
@@ -246,7 +247,7 @@ namespace Damato_App
                 case "zip":
                     return global::Damato_App.Properties.Resources.zip_Image;
                 default:
-                    return global::Damato_App.Properties.Resources.mpg_Image;
+                    return global::Damato_App.Properties.Resources._default_Image;
             }
         }
         public void addtocontrole(File item)
@@ -329,7 +330,8 @@ namespace Damato_App
             this.Cursor = Cursors.WaitCursor;
             MethodInvoker methodInvokerDelegate = async delegate ()
             {
-                List<File> names = await API.GetRecentFiles(Token);
+                List<File> names = await API.GetRecentFiles(Token, ApplicationSettings.SearchSettings.ReturnAmount);
+                names.Reverse();
                 foreach (File item in names)
                 { addtocontrole(item); }
 
@@ -369,9 +371,9 @@ namespace Damato_App
     {
         public static HttpClient _api = new HttpClient() { BaseAddress = new Uri("http://localhost:52799/api/") };
 
-        public static async Task<List<File>> GetRecentFiles(string token)
+        public static async Task<List<File>> GetRecentFiles(string token, int amount = 10)
         {
-            HttpResponseMessage response = await _api.GetAsync($"Files/{token}/GetRecentFiles");
+            HttpResponseMessage response = await _api.GetAsync($"Files/{token}/GetRecentFiles?amount={amount}");
             if (response.IsSuccessStatusCode)
                 return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<List<File>>();
             return new List<File>();

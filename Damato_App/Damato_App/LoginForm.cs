@@ -22,11 +22,13 @@ namespace Damato_App
             {
                 string json = File.ReadAllText("ApplicationSettings.json");
                 applicationSettings = JsonConvert.DeserializeObject<ApplicationSettings>(json);
+                if (applicationSettings.SearchSettings == null)
+                    applicationSettings.SearchSettings = new SearchSettings() { ReturnAmount = 10};
             }
-            catch { applicationSettings = new ApplicationSettings() { LoginSettings = new LoginSettings()}; }
+            catch { applicationSettings = new ApplicationSettings() { LoginSettings = new LoginSettings(), SearchSettings = new SearchSettings() }; }
             if (applicationSettings.LoginSettings.KeepLogdIn)
             {
-                UpdateLogin(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.password, applicationSettings.LoginSettings.KeepLogdIn);
+                //UpdateLogin(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.password, applicationSettings.LoginSettings.KeepLogdIn);
                 Login();
             }
         }
@@ -38,7 +40,10 @@ namespace Damato_App
             temp2Text = false;
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
+                applicationSettings.LoginSettings.UserName = textBox1.Text;
+                applicationSettings.LoginSettings.password = textBox2.Text;
+                applicationSettings.LoginSettings.KeepLogdIn = checkBox1.Checked;
+                //UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
                 Login();
                 //First Time Fix
                 //UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
@@ -57,32 +62,27 @@ namespace Damato_App
             this.Cursor = Cursors.WaitCursor;
             MethodInvoker methodInvokerDelegate = async delegate ()
             {
+                string json = JsonConvert.SerializeObject(applicationSettings);
+                File.WriteAllText("ApplicationSettings.json", json);
                 string token = await API.GetNewToken(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.Password);
                 this.Cursor = Cursors.Default;
-                MainForm main = new MainForm(token);
-                this.Hide();
-                main.Show();
+                if (token.Length == 12)
+                {
+                    MainForm main = new MainForm(token);
+                    this.Hide();
+                    main.Show();
+                }
+                else
+                {
+                    label4.Visible = true;
+                    this.Show();
+                }
             };
 
             if (this.InvokeRequired)
                 this.Invoke(methodInvokerDelegate);
             else
                 methodInvokerDelegate();
-        }
-
-        private void UpdateLogin(string UserName, string password, bool KeepLogdIn)
-        {
-            applicationSettings = new ApplicationSettings()
-            {
-                LoginSettings = new LoginSettings()
-                {
-                    UserName = UserName,
-                    password = password,
-                    KeepLogdIn = KeepLogdIn
-                }
-            };
-            string json = JsonConvert.SerializeObject(applicationSettings);
-            File.WriteAllText("ApplicationSettings.json", json);
         }
 
         private void textBox2_Leave(object sender, EventArgs e)
