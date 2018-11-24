@@ -134,8 +134,11 @@ namespace Damato_App
                 textBox1.Text = "";
         }
 
+        public bool issettings = false;
         private void button5_Click(object sender, EventArgs e)
         {
+            issettings = true;
+            button1.Click -= new System.EventHandler(this.button1_Click);
             Hidden = false;
             timer1.Start();
             panel3.Controls.Clear();
@@ -144,6 +147,13 @@ namespace Damato_App
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (issettings)
+            {
+                string json = JsonConvert.SerializeObject(ApplicationSettings);
+                System.IO.File.WriteAllText("ApplicationSettings.json", json);
+            }
+            issettings = false;
+            button1.Click += new System.EventHandler(this.button1_Click);
             panel3.Controls.Clear();
 
             this.Cursor = Cursors.WaitCursor;
@@ -325,6 +335,7 @@ namespace Damato_App
 
                 List<string> filetypes = await API.GetAllFilesTypes(Token);
                 filetypes.Sort();
+                filetypes.Reverse();
                 CheckTreeView view = new CheckTreeView();
                 // 
                 // checkTreeView1

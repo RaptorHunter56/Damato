@@ -189,6 +189,8 @@
     <Content Include="img\Images\icons8_Password_32px.png" />
     <Content Include="img\Images\icons8_Settings_32px.png" />
     <Content Include="img\Images\icons8_Subtract_32px.png" />
+    <None Include="img\Images\icons8_Toggle_On_32px_1.png" />
+    <None Include="img\Images\icons8_Toggle_Off_32px_1.png" />
     <Content Include="img\Images\icons8_User_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

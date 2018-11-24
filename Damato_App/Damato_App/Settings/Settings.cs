@@ -10,7 +10,12 @@ namespace Damato_App.Settings
     public class ApplicationSettings
     {
         public LoginSettings LoginSettings { get; set; }
-        //public TargetServer TargetServer { get; set; }
+        public SearchSettings SearchSettings { get; set; }
+    }
+
+    public class SearchSettings
+    {
+        public int ReturnAmount { get; set; }
     }
 
     public class LoginSettings

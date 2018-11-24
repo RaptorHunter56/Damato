@@ -60,14 +60,8 @@ namespace Damato_App
                 string token = await API.GetNewToken(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.Password);
                 this.Cursor = Cursors.Default;
                 MainForm main = new MainForm(token);
-                main.ShowDialog();
-                try
-                {
-                    this.Show();
-                }
-                catch { }
-                textBox1.Enabled = true;
-                textBox2.Enabled = true;
+                this.Hide();
+                main.Show();
             };
 
             if (this.InvokeRequired)

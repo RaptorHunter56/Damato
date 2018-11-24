@@ -96,6 +96,14 @@ namespace Damato_App.UserControls
         private void CheckTreeView_Load(object sender, EventArgs e)
         {
             UpdateSub();
+            VisibleSub = !VisibleSub;
+            for (int i = 0; i <= (subcategory.Count - 1); i++)
+            {
+                if (checkBox1.Checked)
+                    subcategory[i].Visible = VisibleSub;
+                else
+                    subcategory[i].Visible = VisibleSub;
+            }
         }
         private bool VisibleSub = true;
         private void checkBox1_Click(object sender, EventArgs e)

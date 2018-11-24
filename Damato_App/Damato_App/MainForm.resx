@@ -211,6 +211,16 @@
         /GLmAqIGKRCzeefoAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="button9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAPVJREFUOE9j
+        oCpoaGjowIYbGxsrZ86cyQpVhhsAFf8HKi5HxyBxIF4NxCxQpdgBSCGUiQKgBiwE4m2TJk1ihwpjAgIG
+        NAHxFSDeCxXGBHgMgAGQIVjVgAFeSSgYFAZIQZmYgJABwCj1Bqq5BMTPgXgeEPNBpSAAnwFAOQ0gfgLE
+        dq2trZJAeiYQz4dKQwBQAJ8BBUDcB+WC+AJA/A7KhQB8BgCdHwmU3wXlgtTaAPF1KBcCQAYAMXpeaAc6
+        WRxogCuQ/RKIdwLxBCg7AKoVAmBpHw37AxV6AfGr2tpaeyA/GsgGeUcHqo0wACouAWI7KBcJMDAAAFbQ
+        uAuZzdIYAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAAT9JREFUSEvt
