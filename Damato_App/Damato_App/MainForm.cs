@@ -176,6 +176,8 @@ namespace Damato_App
         {
             switch (ext.Split('.').Last())
             {
+                case "cs":
+                    return global::Damato_App.Properties.Resources.cs_Image;
                 case "css":
                     return global::Damato_App.Properties.Resources.css_Image;
                 case "csv":
@@ -200,6 +202,8 @@ namespace Damato_App
                     return global::Damato_App.Properties.Resources.gpx_Image;
                 case "html":
                     return global::Damato_App.Properties.Resources.html_Image;
+                case "ico":
+                    return global::Damato_App.Properties.Resources.ico_Image;
                 case "jp2":
                     return global::Damato_App.Properties.Resources.jp2_Image;
                 case "jpg":

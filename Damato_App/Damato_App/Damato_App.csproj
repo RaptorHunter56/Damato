@@ -182,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="img\FileType\cs.Image.png" />
+    <None Include="img\FileType\ico.Image.png" />
     <Content Include="img\ico\icons8_Tomato_2.ico" />
     <Content Include="img\Images\icons8_Delete_32px_1.png" />
     <Content Include="img\Images\icons8_Document_32px.png" />
