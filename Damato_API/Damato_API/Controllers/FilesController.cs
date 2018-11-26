@@ -17,28 +17,28 @@ namespace Damato_API.Controllers
     [RoutePrefix("api/Files")]
     public class FilesController : ApiController
     {
-        public static string PathLocation = @"C:\Users\sbnbl\Desktop";
+        public static string PathLocation = @"C:\Users\sbnbl\Desktop\New folder";
 
         // GET: api/Files/2460348+13/GetRecentFiles
         [HttpGet, Route("{token}/GetRecentFiles")]
         [ResponseType(typeof(List<File>))]
         public IHttpActionResult GetRecentFiles(string token, int amount = 10)
         {
-            Token _token = db.Tokens.Include(t => t.User).Single(t => t._Token == token);
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
             if (_token == null)
                 return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
             IEnumerable<File> files = db.Files.Include(f => f.User).OrderBy(f => f.DateAdded);
-            files = files.Where(f => f.User == _token.User).Reverse().Take(amount);
+            files = files.Reverse().Take(amount);
             foreach (var item in files)
             {
                 item.User.Password = "*****";
             }
             if (files == null)
                 return NotFound();
-            return Ok(files);
+            return Ok(files.Where(f => f.RLevel >= _token.User.Level));
         }
 
         // PUT: api/Files/2460348+13/DownloadFile
@@ -46,13 +46,13 @@ namespace Damato_API.Controllers
         [ResponseType(typeof(string))]
         public IHttpActionResult DownloadFile(string token, string filename)
         {
-            Token _token = db.Tokens.Include(t => t.User).Single(t => t._Token == token);
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
             if (_token == null)
                 return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
-            File _file = db.Files.Where(f => f.Path.Contains(filename)).FirstOrDefault();
+            File _file = db.Files.Where(f => f.Path.Contains(filename) && f.WLevel >= _token.User.Level).FirstOrDefault();
             if (_file == null)
                 return NotFound();
             OutSettings o;
@@ -78,11 +78,33 @@ namespace Damato_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult UploadFile(string token, TFile file, string returnfile = "false")
         {
-            Token _token = db.Tokens.Include(t => t.User).Single(t => t._Token == token);
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
             if (_token == null)
                 return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
+
+            if (returnfile == "true")
+            {
+                if (db.Files.Where(f => f.Path == $@"{PathLocation}\{file.Path}" && f.WLevel >= _token.User.Level).FirstOrDefault() == null)
+                    return Content(HttpStatusCode.Unauthorized, "File Does Not Exist");
+            }
+            else
+            {
+                int coppy = 1;
+                while (System.IO.File.Exists($@"{PathLocation}\{file.Path}"))
+                {
+                    try
+                    {
+                        file.Path = file.Path.Substring(0, file.Path.Length - file.Path.Split('_').Last().Length - 1) + $"_{coppy}." + file.Path.Split('.').Last();
+                    }
+                    catch
+                    {
+                        file.Path = file.Path.Substring(0, file.Path.Length - file.Path.Split('.').Last().Length - 1) + $"_{coppy}." + file.Path.Split('.').Last();
+                    }
+                    coppy++;
+                }
+            }
 
             System.IO.File.WriteAllBytes($@"{PathLocation}\{file.Path}", file.File);
             
@@ -91,26 +113,50 @@ namespace Damato_API.Controllers
                 Path = $@"{PathLocation}\{file.Path}",
                 Level = $"{_token.User.Level},{_token.User.Level},{_token.User.Level}"
             };
-            db.Files.Add(file2);
-            db.SaveChanges();
-            db.Entry(file2).Reload();
-            var user = db.Users.ToList().SingleOrDefault(u => u.ID == _token.User.ID);
-            file2.User = user;
-            db.SaveChanges();
             
             if (returnfile == "true")
             {
-                string json = System.IO.File.ReadAllText("ApplicationSettings.json");
+                string json = System.IO.File.ReadAllText($"{PathLocation}\\ApplicationSettings.json");
                 OutSettings o = JsonConvert.DeserializeObject<OutSettings>(json);
                 o.FileOut.Remove(file2.PathParts.Last());
                 json = JsonConvert.SerializeObject(o);
-                System.IO.File.WriteAllText("ApplicationSettings.json", json);
+                System.IO.File.WriteAllText($"{PathLocation}\\ApplicationSettings.json", json);
+            }
+            else
+            {
+                db.Files.Add(file2);
+                db.SaveChanges();
+                db.Entry(file2).Reload();
+                var user = db.Users.ToList().FirstOrDefault(u => u.ID == _token.User.ID);
+                file2.User = user;
+                db.SaveChanges();
             }
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
 
+        // GET: api/Files/2460348+13/GetRecentFiles
+        [HttpGet, Route("{token}/SearchRecentFiles")]
+        [ResponseType(typeof(List<File>))]
+        public IHttpActionResult SearchRecentFiles(string token, List<string> search, int amount = 10)
+        {
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+
+            IEnumerable<File> files = db.Files.Include(f => f.User).OrderBy(f => f.DateAdded);
+            files = files.Reverse().Take(amount);
+            foreach (var item in files)
+            {
+                item.User.Password = "*****";
+            }
+            if (files == null)
+                return NotFound();
+            return Ok(files.Where(f => f.RLevel >= _token.User.Level));
+        }
 
         private DAMContext db = new DAMContext();
 
