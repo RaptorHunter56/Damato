@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Damato_API.DataBase;
+using Damato_API.Settings;
+using Newtonsoft.Json;
 
 namespace Damato_API.Controllers
 {
@@ -37,10 +39,10 @@ namespace Damato_API.Controllers
             return Ok(files);
         }
 
-        // PUT: api/Files/5
-        [HttpPost, Route("{token}/UploadFile")]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult UploadFile(string token, TFile file)
+        // PUT: api/Files/2460348+13/DownloadFile
+        [HttpPost, Route("{token}/DownloadFile")]
+        [ResponseType(typeof(string))]
+        public IHttpActionResult DownloadFile(string token, string filename)
         {
             Token _token = db.Tokens.Include(t => t.User).Single(t => t._Token == token);
             if (_token == null)
@@ -48,12 +50,43 @@ namespace Damato_API.Controllers
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
-            System.IO.File.WriteAllBytes($@"C:\Users\sbnbl\Desktop\New folder\{file.Path}", file.File);
-            
+            File _file = db.Files.Where(f => f.Path.Contains(filename)).FirstOrDefault();
+            if (_file == null)
+                return NotFound();
+            OutSettings o;
+            try
+            {
+                string json1 = System.IO.File.ReadAllText(@"C:\Users\Steven Bown\Desktop\New folder\ApplicationSettings.json");
+                o = JsonConvert.DeserializeObject<OutSettings>(json1);
+            }
+            catch (Exception)
+            {
+                o = new OutSettings();
+            }
+            o.FileOut.Add(_file.PathParts.Last(), _token.User.ID);
+            string json = JsonConvert.SerializeObject(o);
+            System.IO.File.WriteAllText(@"C:\Users\Steven Bown\Desktop\New folder\ApplicationSettings.json", json);
+            byte[] temp = System.IO.File.ReadAllBytes(_file.Path);
+            return Ok(Convert.ToBase64String(temp));
 
+        }
+
+        // PUT: api/Files/2460348+13/UploadFile
+        [HttpPost, Route("{token}/UploadFile/{returnfile}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult UploadFile(string token, TFile file, string returnfile = "false")
+        {
+            Token _token = db.Tokens.Include(t => t.User).Single(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+
+            System.IO.File.WriteAllBytes($@"C:\Users\Steven Bown\Desktop\New folder\{file.Path}", file.File);
+            
             Damato_API.DataBase.File file2 = new Damato_API.DataBase.File()
             {
-                Path = $@"C:\Users\sbnbl\Desktop\New folder\{file.Path}",
+                Path = $@"C:\Users\Steven Bown\Desktop\New folder\{file.Path}",
                 Level = $"{_token.User.Level},{_token.User.Level},{_token.User.Level}"
             };
             db.Files.Add(file2);
@@ -63,8 +96,19 @@ namespace Damato_API.Controllers
             file2.User = user;
             db.SaveChanges();
             
+            if (returnfile == "true")
+            {
+                string json = System.IO.File.ReadAllText("ApplicationSettings.json");
+                OutSettings o = JsonConvert.DeserializeObject<OutSettings>(json);
+                o.FileOut.Remove(file2.PathParts.Last());
+                json = JsonConvert.SerializeObject(o);
+                System.IO.File.WriteAllText("ApplicationSettings.json", json);
+            }
+
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+
 
         private DAMContext db = new DAMContext();
 

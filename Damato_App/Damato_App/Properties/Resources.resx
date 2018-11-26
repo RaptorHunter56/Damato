@@ -118,17 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txt.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\txt.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="kmz.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\kmz.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="kml.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\kml.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mov.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\mov.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ico_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\ico.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="csv.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\csv.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tif.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\tif.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,9 +145,6 @@
   <data name="ppt.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\ppt.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tar.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\tar.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="osm.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\osm.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,17 +160,23 @@
   <data name="gif.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\gif.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="zip.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\zip.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="woff.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\woff.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="csv.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\csv.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_Toggle_Off_32px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Images\icons8_Toggle_Off_32px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dmg.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\dmg.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eps.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\eps.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_Toggle_On_32px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Images\icons8_Toggle_On_32px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mov.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\mov.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jpg.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\jpg.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,11 +193,20 @@
   <data name="nmea.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\nmea.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="wav.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\wav.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dll.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\dll.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="html.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\html.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gis.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\gis.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="@deleted.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\@Deleted.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cs_Image1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\cs.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exe.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\exe.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,43 +220,37 @@
   <data name="@default.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\@default.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tar.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\tar.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="css.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\css.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wav.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\wav.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="psd.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\psd.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ogg.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\ogg.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="css.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\css.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eps.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\eps.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="png.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\png.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="html.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\html.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="zip.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\zip.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="@deleted.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\@Deleted.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dll.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\dll.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_Toggle_Off_32px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\Images\icons8_Toggle_Off_32px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8_Toggle_On_32px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\Images\icons8_Toggle_On_32px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cs_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FileType\cs.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cs_Image1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\cs.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="txt.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FileType\txt.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ico_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FileType\ico.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_Down_Arrow_26px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Images\icons8_Down_Arrow_26px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_Up_26px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Images\icons8_Up_26px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

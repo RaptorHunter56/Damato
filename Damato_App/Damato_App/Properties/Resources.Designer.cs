@@ -243,6 +243,16 @@ namespace Damato_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Down_Arrow_26px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Down_Arrow_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Toggle_Off_32px_1 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Toggle_Off_32px_1", resourceCulture);
@@ -256,6 +266,16 @@ namespace Damato_App.Properties {
         internal static System.Drawing.Bitmap icons8_Toggle_On_32px_1 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Toggle_On_32px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Up_26px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Up_26px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

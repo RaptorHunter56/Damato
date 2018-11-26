@@ -83,7 +83,24 @@ namespace Damato_App
         {
             string[] FileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
+            List<string> vs = new List<string>();
+
             foreach (var item in FileList)
+            {
+
+                try
+                {
+                    string[] allfiles = System.IO.Directory.GetFiles(item, "*.*", System.IO.SearchOption.AllDirectories);
+                    foreach (var item2 in allfiles)
+                    { vs.Add(item2); }
+                }
+                catch
+                {
+                    vs.Add(item);
+                }
+            }
+
+            foreach (var item in vs)
             {
                 this.Cursor = Cursors.WaitCursor;
                 MethodInvoker methodInvokerDelegate = async delegate ()
@@ -91,9 +108,12 @@ namespace Damato_App
                     await API.UploadFile(Token, item);
                     List<File> names = await API.GetRecentFiles(Token, ApplicationSettings.SearchSettings.ReturnAmount);
                     names.Reverse();
+                    panel3.Controls.Clear();
                     foreach (File item2 in names)
                     { addtocontrole(item2); }
                     this.Cursor = Cursors.Default;
+                    foreach (var item2 in panel3.Controls)
+                    { (item2 as TableLayoutPanel).Controls[0].Visible = isdonwnload; }
                 };
 
                 if (this.InvokeRequired)
@@ -167,6 +187,7 @@ namespace Damato_App
                 System.IO.File.WriteAllText("ApplicationSettings.json", json);
             }
             issettings = false;
+            isdonwnload = false;
             button1.Click += new System.EventHandler(this.button1_Click);
             panel3.Controls.Clear();
 
@@ -178,6 +199,8 @@ namespace Damato_App
                 foreach (File item in names)
                 { addtocontrole(item); }
                 this.Cursor = Cursors.Default;
+                foreach (var item in panel3.Controls)
+                { (item as TableLayoutPanel).Controls[0].Visible = false; }
             };
 
             if (this.InvokeRequired)
@@ -273,6 +296,7 @@ namespace Damato_App
             //panel3.Controls.Add(new SettingsControl(ApplicationSettings) { Dock = DockStyle.Fill });
             TableLayoutPanel tableLayoutPanelx = new TableLayoutPanel();
             PictureBox pictureBoxx = new PictureBox();
+            PictureBox pictureBoxx2 = new PictureBox();
             Label label1x = new Label();
             Label label2x = new Label();
             // 
@@ -281,7 +305,7 @@ namespace Damato_App
             pictureBoxx.Dock = System.Windows.Forms.DockStyle.Fill;
             pictureBoxx.Image = GetImage(item.PathParts.Last());
             pictureBoxx.Location = new System.Drawing.Point(3, 3);
-            pictureBoxx.Name = "pictureBoxx";
+            pictureBoxx.Name = "pictureBox2";
             pictureBoxx.Size = new System.Drawing.Size(24, 24);
             pictureBoxx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             pictureBoxx.TabIndex = 0;
@@ -293,7 +317,7 @@ namespace Damato_App
             label1x.AutoSize = true;
             label1x.ForeColor = System.Drawing.SystemColors.ControlDark;
             label1x.Location = new System.Drawing.Point(33, 3);
-            label1x.Name = "label1x";
+            label1x.Name = "label2";
             label1x.Padding = new System.Windows.Forms.Padding(0, 2, 2, 2);
             label1x.Size = new System.Drawing.Size(75, 24);
             label1x.TabIndex = 3;
@@ -304,19 +328,33 @@ namespace Damato_App
             label2x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             label2x.AutoSize = true;
             label2x.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            label2x.Location = new System.Drawing.Point(441, 3);
-            label2x.Name = "label2x";
+            label2x.Location = new System.Drawing.Point(411, 3);
+            label2x.Name = "label3";
             label2x.Padding = new System.Windows.Forms.Padding(0, 2, 2, 2);
             label2x.Size = new System.Drawing.Size(91, 24);
             label2x.TabIndex = 4;
             label2x.Text = item.DateAdded.ToShortDateString();
             // 
+            // pictureBoxx2
+            // 
+            pictureBoxx2.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBoxx2.Image = global::Damato_App.Properties.Resources.icons8_Down_Arrow_26px;
+            pictureBoxx2.Location = new System.Drawing.Point(508, 3);
+            pictureBoxx2.Name = "pictureBox3";
+            pictureBoxx2.Size = new System.Drawing.Size(24, 24);
+            pictureBoxx2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBoxx2.TabIndex = 5;
+            pictureBoxx2.TabStop = false;
+            pictureBoxx2.Click += new System.EventHandler(pictureBox3_Click);
+            // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanelx.ColumnCount = 3;
+            tableLayoutPanelx.ColumnCount = 4;
             tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelx.Controls.Add(pictureBoxx2, 3, 0);
             tableLayoutPanelx.Controls.Add(label2x, 2, 0);
             tableLayoutPanelx.Controls.Add(label1x, 1, 0);
             tableLayoutPanelx.Controls.Add(pictureBoxx, 0, 0);
@@ -375,6 +413,70 @@ namespace Damato_App
                 panel6.Controls.Clear();
                 panel6.Controls.Add(view);
                 this.Cursor = Cursors.Default;
+                foreach (var item in panel3.Controls)
+                {
+                    (item as TableLayoutPanel).Controls[0].Visible = false;
+                }
+            };
+
+            if (this.InvokeRequired)
+                this.Invoke(methodInvokerDelegate);
+            else
+                methodInvokerDelegate();
+        }
+
+        public bool isdonwnload = false;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (issettings)
+            {
+                string json = JsonConvert.SerializeObject(ApplicationSettings);
+                System.IO.File.WriteAllText("ApplicationSettings.json", json);
+                this.Cursor = Cursors.WaitCursor;
+                MethodInvoker methodInvokerDelegate = async delegate ()
+                {
+                    panel3.Controls.Clear();
+                    List<File> names = await API.GetRecentFiles(Token, ApplicationSettings.SearchSettings.ReturnAmount);
+                    names.Reverse();
+                    foreach (File item in names)
+                    { addtocontrole(item); }
+                    this.Cursor = Cursors.Default;
+                    foreach (var item in panel3.Controls)
+                    { (item as TableLayoutPanel).Controls[0].Visible = true; }
+                };
+
+                if (this.InvokeRequired)
+                    this.Invoke(methodInvokerDelegate);
+                else
+                    methodInvokerDelegate();
+            }
+            else
+            {
+                foreach (var item in panel3.Controls)
+                { (item as TableLayoutPanel).Controls[0].Visible = true; }
+            }
+            isdonwnload = true;
+            button1.Click -= new System.EventHandler(this.button1_Click);
+            Hidden = false;
+            timer1.Start();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            //(sender as PictureBox)
+            //(((sender as PictureBox).Parent as TableLayoutPanel).Controls[2] as Label).Text = "";
+            this.Cursor = Cursors.WaitCursor;
+            MethodInvoker methodInvokerDelegate = async delegate ()
+            {
+                await API.DownloadFile(Token, (((sender as PictureBox).Parent as TableLayoutPanel).Controls[2] as Label).Text, ApplicationSettings.DownLoadedSettings.DownLoadFileLocation);
+                List<File> names = await API.GetRecentFiles(Token, ApplicationSettings.SearchSettings.ReturnAmount);
+                names.Reverse();
+                panel3.Controls.Clear();
+                foreach (File item2 in names)
+                { addtocontrole(item2); }
+                this.Cursor = Cursors.Default;
+                foreach (var item2 in panel3.Controls)
+                { (item2 as TableLayoutPanel).Controls[0].Visible = isdonwnload; }
             };
 
             if (this.InvokeRequired)
@@ -383,7 +485,6 @@ namespace Damato_App
                 methodInvokerDelegate();
         }
     }
-
 
     public static class API
     {
@@ -419,7 +520,19 @@ namespace Damato_App
             byte[] temp = System.IO.File.ReadAllBytes(filepath);//{filepath.Split('\\').Last()}
             //{ "Path": "string", "File": "AxD//w==" }
             HttpContent _content = new StringContent($"{"{"} \"Path\": \"{filepath.Split('\\').Last()}\", \"File\": \"{ Convert.ToBase64String(System.IO.File.ReadAllBytes(filepath))}\" {"}"}", Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _api.PostAsync($"Files/{token}/UploadFile", _content);
+            HttpResponseMessage response = await _api.PostAsync($"Files/{token}/UploadFile/false", _content);
+            return true;
+        }
+
+        public static async Task<bool> DownloadFile(string token, string filename, string filepath)
+        {
+            //api/Files/0132995%2B13/DownloadFile?filename=2.txt
+            HttpResponseMessage response = await _api.PostAsync($"Files/{token}/DownloadFile?filename={filename}", null);
+            if (response.IsSuccessStatusCode)
+            {
+                string ss = await response.Content.ReadAsStringAsync();
+                System.IO.File.WriteAllBytes($"{filepath}\\{filename}", Convert.FromBase64String(ss));
+            }
             return true;
         }
 
