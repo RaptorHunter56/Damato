@@ -46,7 +46,6 @@
             this.PanelSlide = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.checkTreeView1 = new Damato_App.UserControls.CheckTreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -56,6 +55,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkTreeView1 = new Damato_App.UserControls.CheckTreeView();
             this.dragControl1 = new Damato_App.UserControls.DragControl();
             this.dragControl2 = new Damato_App.UserControls.DragControl();
             this.dragControl3 = new Damato_App.UserControls.DragControl();
@@ -96,6 +96,7 @@
             // 
             // button8
             // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Dock = System.Windows.Forms.DockStyle.Right;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -112,6 +113,7 @@
             // 
             // button7
             // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Dock = System.Windows.Forms.DockStyle.Right;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -161,6 +163,7 @@
             // 
             // button6
             // 
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
@@ -172,6 +175,7 @@
             // 
             // button5
             // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
@@ -194,6 +198,7 @@
             // 
             // button3
             // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
@@ -205,6 +210,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
@@ -217,6 +223,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
@@ -241,6 +248,7 @@
             // 
             // button9
             // 
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
@@ -262,21 +270,6 @@
             this.panel6.Padding = new System.Windows.Forms.Padding(1);
             this.panel6.Size = new System.Drawing.Size(128, 366);
             this.panel6.TabIndex = 1;
-            // 
-            // checkTreeView1
-            // 
-            this.checkTreeView1.AutoSize = true;
-            this.checkTreeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.checkTreeView1.Category = "File Types";
-            this.checkTreeView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.checkTreeView1.Location = new System.Drawing.Point(1, 1);
-            this.checkTreeView1.Margin = new System.Windows.Forms.Padding(21, 28, 21, 28);
-            this.checkTreeView1.MinimumSize = new System.Drawing.Size(0, 237);
-            this.checkTreeView1.Name = "checkTreeView1";
-            this.checkTreeView1.Padding = new System.Windows.Forms.Padding(40, 43, 40, 43);
-            this.checkTreeView1.Size = new System.Drawing.Size(126, 237);
-            this.checkTreeView1.Subcategory.Add(".txt");
-            this.checkTreeView1.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -387,6 +380,21 @@
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // checkTreeView1
+            // 
+            this.checkTreeView1.AutoSize = true;
+            this.checkTreeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.checkTreeView1.Category = "File Types";
+            this.checkTreeView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkTreeView1.Location = new System.Drawing.Point(1, 1);
+            this.checkTreeView1.Margin = new System.Windows.Forms.Padding(48, 66, 48, 66);
+            this.checkTreeView1.MinimumSize = new System.Drawing.Size(0, 562);
+            this.checkTreeView1.Name = "checkTreeView1";
+            this.checkTreeView1.Padding = new System.Windows.Forms.Padding(90, 102, 90, 102);
+            this.checkTreeView1.Size = new System.Drawing.Size(126, 562);
+            this.checkTreeView1.Subcategory.Add(".txt");
+            this.checkTreeView1.TabIndex = 0;
             // 
             // dragControl1
             // 

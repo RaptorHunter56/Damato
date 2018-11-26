@@ -69,6 +69,7 @@
             // 
             // button8
             // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Dock = System.Windows.Forms.DockStyle.Right;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -85,6 +86,7 @@
             // 
             // button7
             // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Dock = System.Windows.Forms.DockStyle.Right;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -188,6 +190,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -197,7 +200,7 @@
             this.button1.Size = new System.Drawing.Size(218, 42);
             this.button1.TabIndex = 8;
             this.button1.Text = "LOGIN";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // LoginForm
