@@ -83,10 +83,24 @@ namespace Damato_App
         {
             string[] FileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
-            File file = new File()
+            foreach (var item in FileList)
             {
-                Path = FileList.FirstOrDefault()
-            };
+                this.Cursor = Cursors.WaitCursor;
+                MethodInvoker methodInvokerDelegate = async delegate ()
+                {
+                    await API.UploadFile(Token, item);
+                    List<File> names = await API.GetRecentFiles(Token, ApplicationSettings.SearchSettings.ReturnAmount);
+                    names.Reverse();
+                    foreach (File item2 in names)
+                    { addtocontrole(item2); }
+                    this.Cursor = Cursors.Default;
+                };
+
+                if (this.InvokeRequired)
+                    this.Invoke(methodInvokerDelegate);
+                else
+                    methodInvokerDelegate();
+            }
 
             //// 
             //// fileDisplay1
@@ -398,6 +412,15 @@ namespace Damato_App
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
             return "Fail";
+        }
+
+        public static async Task<bool> UploadFile(string token, string filepath)
+        {
+            byte[] temp = System.IO.File.ReadAllBytes(filepath);//{filepath.Split('\\').Last()}
+            //{ "Path": "string", "File": "AxD//w==" }
+            HttpContent _content = new StringContent($"{"{"} \"Path\": \"{filepath.Split('\\').Last()}\", \"File\": \"{ Convert.ToBase64String(System.IO.File.ReadAllBytes(filepath))}\" {"}"}", Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _api.PostAsync($"Files/{token}/UploadFile", _content);
+            return true;
         }
 
         //public static async Task<List<Flag>> ByCurrency(string code)

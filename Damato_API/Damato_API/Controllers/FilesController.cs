@@ -37,6 +37,35 @@ namespace Damato_API.Controllers
             return Ok(files);
         }
 
+        // PUT: api/Files/5
+        [HttpPost, Route("{token}/UploadFile")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult UploadFile(string token, TFile file)
+        {
+            Token _token = db.Tokens.Include(t => t.User).Single(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+
+            System.IO.File.WriteAllBytes($@"C:\Users\sbnbl\Desktop\New folder\{file.Path}", file.File);
+            
+
+            Damato_API.DataBase.File file2 = new Damato_API.DataBase.File()
+            {
+                Path = $@"C:\Users\sbnbl\Desktop\New folder\{file.Path}",
+                Level = $"{_token.User.Level},{_token.User.Level},{_token.User.Level}"
+            };
+            db.Files.Add(file2);
+            db.SaveChanges();
+            db.Entry(file2).Reload();
+            var user = db.Users.ToList().SingleOrDefault(u => u.ID == _token.User.ID);
+            file2.User = user;
+            db.SaveChanges();
+            
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         private DAMContext db = new DAMContext();
 
         // GET: api/Files
