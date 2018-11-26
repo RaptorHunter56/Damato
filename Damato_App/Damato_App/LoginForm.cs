@@ -135,5 +135,17 @@ namespace Damato_App
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            temp2Text = false;
+            applicationSettings.LoginSettings.UserName = textBox1.Text;
+            applicationSettings.LoginSettings.password = textBox2.Text;
+            applicationSettings.LoginSettings.KeepLogdIn = checkBox1.Checked;
+            //UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
+            Login();
+            //First Time Fix
+            //UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
+        }
     }
 }
