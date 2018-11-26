@@ -147,5 +147,10 @@ namespace Damato_App
             //First Time Fix
             //UpdateLogin(textBox1.Text, textBox2.Text, checkBox1.Checked);
         }
+
+        private void OpenLink(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/RaptorHunter56/Damato/");
+        }
     }
 }
