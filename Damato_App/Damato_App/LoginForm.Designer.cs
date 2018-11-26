@@ -169,9 +169,9 @@
             this.checkBox1.Location = new System.Drawing.Point(99, 99);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(119, 22);
+            this.checkBox1.Size = new System.Drawing.Size(127, 22);
             this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Keep Loged In";
+            this.checkBox1.Text = "Keep Logged In";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label4
