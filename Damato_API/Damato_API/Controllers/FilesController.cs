@@ -17,6 +17,8 @@ namespace Damato_API.Controllers
     [RoutePrefix("api/Files")]
     public class FilesController : ApiController
     {
+        public static string PathLocation = @"C:\Users\sbnbl\Desktop";
+
         // GET: api/Files/2460348+13/GetRecentFiles
         [HttpGet, Route("{token}/GetRecentFiles")]
         [ResponseType(typeof(List<File>))]
@@ -56,7 +58,7 @@ namespace Damato_API.Controllers
             OutSettings o;
             try
             {
-                string json1 = System.IO.File.ReadAllText(@"C:\Users\Steven Bown\Desktop\New folder\ApplicationSettings.json");
+                string json1 = System.IO.File.ReadAllText($@"{PathLocation}\ApplicationSettings.json");
                 o = JsonConvert.DeserializeObject<OutSettings>(json1);
             }
             catch (Exception)
@@ -65,7 +67,7 @@ namespace Damato_API.Controllers
             }
             o.FileOut.Add(_file.PathParts.Last(), _token.User.ID);
             string json = JsonConvert.SerializeObject(o);
-            System.IO.File.WriteAllText(@"C:\Users\Steven Bown\Desktop\New folder\ApplicationSettings.json", json);
+            System.IO.File.WriteAllText($@"{PathLocation}\ApplicationSettings.json", json);
             byte[] temp = System.IO.File.ReadAllBytes(_file.Path);
             return Ok(Convert.ToBase64String(temp));
 
@@ -82,11 +84,11 @@ namespace Damato_API.Controllers
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
-            System.IO.File.WriteAllBytes($@"C:\Users\Steven Bown\Desktop\New folder\{file.Path}", file.File);
+            System.IO.File.WriteAllBytes($@"{PathLocation}\{file.Path}", file.File);
             
             Damato_API.DataBase.File file2 = new Damato_API.DataBase.File()
             {
-                Path = $@"C:\Users\Steven Bown\Desktop\New folder\{file.Path}",
+                Path = $@"{PathLocation}\{file.Path}",
                 Level = $"{_token.User.Level},{_token.User.Level},{_token.User.Level}"
             };
             db.Files.Add(file2);
