@@ -269,7 +269,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.panel6.Controls.Add(this.checkTreeView1);
+            //this.panel6.Controls.Add(this.checkTreeView1);
             this.panel6.Location = new System.Drawing.Point(7, 41);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(1);

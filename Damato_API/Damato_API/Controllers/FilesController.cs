@@ -136,6 +136,78 @@ namespace Damato_API.Controllers
         }
 
 
+        // PUT: api/Files/2460348+13/UploadFileTaged
+        [HttpPost, Route("{token}/UploadFileTaged/{returnfile}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult UploadFileTaged(string token, CFile file, string returnfile = "false")
+        {
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+
+            if (returnfile == "true")
+            {
+                if (db.Files.Where(f => f.Path == $@"{PathLocation}\{file.Path}" && f.WLevel >= _token.User.Level).FirstOrDefault() == null)
+                    return Content(HttpStatusCode.Unauthorized, "File Does Not Exist");
+            }
+            else
+            {
+                int coppy = 1;
+                while (System.IO.File.Exists($@"{PathLocation}\{file.Path}"))
+                {
+                    try
+                    {
+                        file.Path = file.Path.Substring(0, file.Path.Length - file.Path.Split('_').Last().Length - 1) + $"_{coppy}." + file.Path.Split('.').Last();
+                    }
+                    catch
+                    {
+                        file.Path = file.Path.Substring(0, file.Path.Length - file.Path.Split('.').Last().Length - 1) + $"_{coppy}." + file.Path.Split('.').Last();
+                    }
+                    coppy++;
+                }
+            }
+
+            System.IO.File.WriteAllBytes($@"{PathLocation}\{file.Path}", file.File);
+
+            Damato_API.DataBase.File file2 = new Damato_API.DataBase.File()
+            {
+                Path = $@"{PathLocation}\{file.Path}",
+                Level = $"{_token.User.Level},{_token.User.Level},{_token.User.Level}"
+            };
+
+            foreach (var item in file.Tags)
+            {
+                Damato_API.DataBase.Tag s = new Tag()
+                {
+                    _Tag = item
+                };
+                file2.MainTags.Add(s);
+            }
+
+            if (returnfile == "true")
+            {
+                string json = System.IO.File.ReadAllText($@"{PathLocation}\ApplicationSettings.json");
+                OutSettings o = JsonConvert.DeserializeObject<OutSettings>(json);
+                o.FileOut.Remove(file2.PathParts.Last());
+                json = JsonConvert.SerializeObject(o);
+                System.IO.File.WriteAllText($@"{PathLocation}\ApplicationSettings.json", json);
+            }
+            else
+            {
+                db.Files.Add(file2);
+                db.SaveChanges();
+                db.Entry(file2).Reload();
+                var user = db.Users.ToList().FirstOrDefault(u => u.ID == _token.User.ID);
+                file2.User = user;
+                db.SaveChanges();
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+
         // GET: api/Files/2460348+13/GetRecentFiles
         [HttpGet, Route("{token}/SearchRecentFiles")]
         [ResponseType(typeof(List<File>))]

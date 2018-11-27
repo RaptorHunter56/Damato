@@ -116,6 +116,10 @@ namespace Damato_App
                 this.Cursor = Cursors.WaitCursor;
                 MethodInvoker methodInvokerDelegate = async delegate ()
                 {
+                    AddTags a = new AddTags() { TopText = item };
+                    a.ShowDialog();
+                    System.Windows.Forms.Application.Exit();
+
                     try
                     {
                         await API.UploadFile(Token, item);
