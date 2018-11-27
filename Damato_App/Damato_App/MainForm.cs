@@ -764,6 +764,7 @@ namespace Damato_App
                     names = await API.SearchRecentFiles(Token, ss, ApplicationSettings.SearchSettings.ReturnAmount);
                 }
                 names.Reverse();
+                panel3.Controls.Clear();
                 foreach (File item in names)
                 { addtocontrole(item); }
                 this.Cursor = Cursors.Default;
@@ -861,7 +862,12 @@ namespace Damato_App
 
         public static async Task<List<File>> SearchRecentFiles(string token, List<string> search, int amount = 10)
         {
-            HttpResponseMessage response = await _api.GetAsync($"Files/{token}/GetRecentFiles?amount={amount}");
+            string input = $"Files/{token}/SearchRecentFiles?amount={amount}";
+            foreach (var item in search)
+            {
+                input += $"&search={item}";
+            }
+            HttpResponseMessage response = await _api.GetAsync(input);
             if (response.IsSuccessStatusCode)
                 return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<List<File>>();
             else

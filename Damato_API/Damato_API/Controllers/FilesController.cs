@@ -139,7 +139,7 @@ namespace Damato_API.Controllers
         // GET: api/Files/2460348+13/GetRecentFiles
         [HttpGet, Route("{token}/SearchRecentFiles")]
         [ResponseType(typeof(List<File>))]
-        public IHttpActionResult SearchRecentFiles(string token, List<string> search, int amount = 10)
+        public IHttpActionResult SearchRecentFiles(string token, [FromUri] string[] search, int amount = 10)
         {
             Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
             if (_token == null)
@@ -148,6 +148,17 @@ namespace Damato_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
             IEnumerable<File> files = db.Files.Include(f => f.User).OrderBy(f => f.DateAdded);
+            List<File> temp = new List<File>();
+            foreach (var item in search.Where(s => s[0] == '.'))
+            {
+                temp.AddRange(files.Where(f => ("." + f.Path.Split('.').Last()) == item));
+            }
+            if (temp.Count() > 0)
+                files = temp;
+            foreach (var item in search.Where(s => s[0] != '.'))
+            {
+                files = files.Where(f => (f.Path.Split('\\').Last().Contains(item)));
+            }
             files = files.Reverse().Take(amount);
             foreach (var item in files)
             {

@@ -88,6 +88,8 @@ namespace Damato_App
                 else
                 {
                     label4.Visible = true;
+                    textBox1.Enabled = true;
+                    textBox2.Enabled = true;
                     this.Show();
                 }
             };
