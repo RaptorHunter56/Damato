@@ -12,6 +12,7 @@ namespace Damato_API.DataBase
         public DbSet<User> Users { get; set; }
         public DbSet<Token> Tokens { get; set; }
         public DbSet<File> Files { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         public DAMContext() : base("name=damatoapidbserver")
         {
