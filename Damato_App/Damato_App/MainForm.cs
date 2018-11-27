@@ -781,7 +781,7 @@ namespace Damato_App
 
     public static class API
     {
-        public static HttpClient _api = new HttpClient() { BaseAddress = new Uri("http://localhost:52799/api/") };
+        public static HttpClient _api = new HttpClient() { BaseAddress = new Uri("https://damatoapi.azurewebsites.net/api/") };
 
         public static async Task<List<File>> GetRecentFiles(string token, int amount = 10)
         {

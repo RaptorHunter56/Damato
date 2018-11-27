@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTags.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTags.Designer.cs">
+      <DependentUpon>AddTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cipher.cs" />
     <Compile Include="DataBase\Context.cs" />
     <Compile Include="DataBase\File.cs" />
@@ -103,6 +109,9 @@
     <Compile Include="UserControls\SettingsControl.Designer.cs">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddTags.resx">
+      <DependentUpon>AddTags.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
