@@ -15,6 +15,7 @@ namespace Damato_App
         public AddTags()
         {
             InitializeComponent();
+            label1.Text = TopText;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -51,7 +52,9 @@ namespace Damato_App
                 (sender as TextBox).Text = "";
         }
 
-        public int Ccount = 1;
+        public int Ccount = 0;
+        public string TopText { get { return label1.Text; } set { label1.Text = value; } }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             
@@ -75,16 +78,16 @@ namespace Damato_App
             xtableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             xtableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             xtableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            xtableLayoutPanel2.Controls.Add(xbutton2, 2, 0);
             xtableLayoutPanel2.Controls.Add(xtextBox1, 1, 0);
+            xtableLayoutPanel2.Controls.Add(xbutton2, 2, 0);
             xtableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             xtableLayoutPanel2.Name = "tableLayoutPanel2";
             xtableLayoutPanel2.RowCount = 1;
             xtableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            xtableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            xtableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            xtableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            xtableLayoutPanel2.Size = new System.Drawing.Size(470, 30);
+            xtableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            xtableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            xtableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            xtableLayoutPanel2.Size = new System.Drawing.Size(441, 30);
             xtableLayoutPanel2.TabIndex = 11;
             // 
             // button2
@@ -114,12 +117,32 @@ namespace Damato_App
             xtextBox1.Name = "textBox1";
             xtextBox1.Size = new System.Drawing.Size(408, 16);
             xtextBox1.TabIndex = 7;
-            xtextBox1.Text = "Add Tag";
+            xtextBox1.Text = "";
             xtextBox1.Enter += new System.EventHandler(textBox1_Enter);
             xtextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(textBox1_KeyDown);
             xtextBox1.Leave += new System.EventHandler(textBox1_Leave);
             xtextBox1.TextChanged += new EventHandler(textBox1_TextChanged);
             flowLayoutPanel1.Controls.Add(xtableLayoutPanel2);
+            xtableLayoutPanel2.Tag = Ccount;
+            xtextBox1.Focus();
+        }
+        public List<string> vss = new List<string>();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string> vs = new List<string>();
+            foreach (var item in flowLayoutPanel1.Controls)
+            {
+                string s = ((item as TableLayoutPanel).Controls[0] as TextBox).Text;
+                if (s.Trim() != "" && s.Trim() != "Add Tag")
+                    vs.Add(s.Trim());
+                else
+                {
+                    ((item as TableLayoutPanel).Controls[0] as TextBox).Focus();
+                    return;
+                }
+            }
+            vss = vs;
+            this.Close();
         }
     }
 }

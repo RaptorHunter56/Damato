@@ -55,4 +55,10 @@ namespace Damato_API.DataBase
         public string Path { get; set; }
         public Byte[] File { get; set; }
     }
+    public class CFile
+    {
+        public string Path { get; set; }
+        public Byte[] File { get; set; }
+        public String[] Tags { get; set; }
+    }
 }
