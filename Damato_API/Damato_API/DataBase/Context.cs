@@ -20,18 +20,11 @@ namespace Damato_API.DataBase
 
         public static string Password()
         {
-            try
+            using (StreamReader r = new StreamReader(@"D:\home\site\wwwroot\bin\DBSettings.json"))
             {
-                using (StreamReader r = new StreamReader(@"D:\home\site\wwwroot\bin\DBSettings.json"))
-                {
-                    string json = r.ReadToEnd();
-                    return JsonConvert.DeserializeObject<string>(json, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                }
+                var json = r.ReadToEnd();
+                return json;
             }
-            catch(Exception e)
-            {
-                return null;
-            } 
         }
         public DAMContext()
         {

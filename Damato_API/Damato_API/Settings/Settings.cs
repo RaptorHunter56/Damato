@@ -7,8 +7,8 @@ namespace Damato_API.Settings
 {
     public class OutSettings
     {
-        public OutSettings() { FileOut = new Dictionary<string, int>(); key = ""; }
+        public OutSettings() { FileOut = new Dictionary<string, int>();}
         public Dictionary<string, int> FileOut { get; set; }
-		public string key {get ; set;}
+		
     }
 }
