@@ -33,7 +33,7 @@ namespace Damato_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
-            string json = System.IO.File.ReadAllText($@"{FilesController.PathLocation}/ApplicationSettings.json{FilesController.Key}");
+            string json = System.IO.File.ReadAllText($@"{FilesController.PathLocation}\ApplicationSettings.json");
             OutSettings Settings = JsonConvert.DeserializeObject<OutSettings>(json);
             List<string> s = new List<string>();
             foreach (var item in Settings.FileOut)
