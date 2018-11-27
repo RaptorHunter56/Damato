@@ -140,6 +140,14 @@
     <Compile Include="Migrations\201811222200032_Files-User_Added.Designer.cs">
       <DependentUpon>201811222200032_Files-User_Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811270049435_Tags_Added.cs" />
+    <Compile Include="Migrations\201811270049435_Tags_Added.Designer.cs">
+      <DependentUpon>201811270049435_Tags_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811270052042_Tags-Files_Added.cs" />
+    <Compile Include="Migrations\201811270052042_Tags-Files_Added.Designer.cs">
+      <DependentUpon>201811270052042_Tags-Files_Added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\Settings.cs" />
@@ -178,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811222200032_Files-User_Added.resx">
       <DependentUpon>201811222200032_Files-User_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811270049435_Tags_Added.resx">
+      <DependentUpon>201811270049435_Tags_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811270052042_Tags-Files_Added.resx">
+      <DependentUpon>201811270052042_Tags-Files_Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

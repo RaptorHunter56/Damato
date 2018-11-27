@@ -46,6 +46,8 @@ namespace Damato_API.DataBase
         }
 
         public User User { get; set; }
+        
+        public List<Tag> MainTags { get; set; }
     }
 
     public class TFile
