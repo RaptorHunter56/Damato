@@ -47,4 +47,10 @@ namespace Damato_API.DataBase
 
         public User User { get; set; }
     }
+
+    public class TFile
+    {
+        public string Path { get; set; }
+        public Byte[] File { get; set; }
+    }
 }

@@ -44,18 +44,19 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.PanelSlide = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.checkTreeView1 = new Damato_App.UserControls.CheckTreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button9 = new System.Windows.Forms.Button();
-            this.checkTreeView1 = new Damato_App.UserControls.CheckTreeView();
             this.dragControl1 = new Damato_App.UserControls.DragControl();
             this.dragControl2 = new Damato_App.UserControls.DragControl();
             this.dragControl3 = new Damato_App.UserControls.DragControl();
@@ -69,6 +70,7 @@
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +98,7 @@
             // 
             // button8
             // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Dock = System.Windows.Forms.DockStyle.Right;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -112,6 +115,7 @@
             // 
             // button7
             // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Dock = System.Windows.Forms.DockStyle.Right;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -161,6 +165,7 @@
             // 
             // button6
             // 
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
@@ -172,6 +177,7 @@
             // 
             // button5
             // 
+            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
@@ -186,14 +192,17 @@
             // 
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(2, 125);
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(3, 124);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(37, 36);
             this.button4.TabIndex = 1;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
@@ -205,6 +214,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
@@ -217,6 +227,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
@@ -239,6 +250,18 @@
             this.PanelSlide.Size = new System.Drawing.Size(150, 419);
             this.PanelSlide.TabIndex = 2;
             // 
+            // button9
+            // 
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
+            this.button9.Location = new System.Drawing.Point(120, 17);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(17, 16);
+            this.button9.TabIndex = 2;
+            this.button9.UseVisualStyleBackColor = true;
+            // 
             // panel6
             // 
             this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -251,6 +274,21 @@
             this.panel6.Padding = new System.Windows.Forms.Padding(1);
             this.panel6.Size = new System.Drawing.Size(128, 366);
             this.panel6.TabIndex = 1;
+            // 
+            // checkTreeView1
+            // 
+            this.checkTreeView1.AutoSize = true;
+            this.checkTreeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.checkTreeView1.Category = "File Types";
+            this.checkTreeView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkTreeView1.Location = new System.Drawing.Point(1, 1);
+            this.checkTreeView1.Margin = new System.Windows.Forms.Padding(48, 66, 48, 66);
+            this.checkTreeView1.MinimumSize = new System.Drawing.Size(0, 562);
+            this.checkTreeView1.Name = "checkTreeView1";
+            this.checkTreeView1.Padding = new System.Windows.Forms.Padding(90, 102, 90, 102);
+            this.checkTreeView1.Size = new System.Drawing.Size(126, 562);
+            this.checkTreeView1.Subcategory.Add(".txt");
+            this.checkTreeView1.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -305,10 +343,12 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox3, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 0);
@@ -322,12 +362,24 @@
             this.tableLayoutPanel1.MouseEnter += new System.EventHandler(this.tableLayoutPanel1_MouseEnter);
             this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.tableLayoutPanel1_MouseLeave);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Image = global::Damato_App.Properties.Resources.icons8_Down_Arrow_26px;
+            this.pictureBox3.Location = new System.Drawing.Point(508, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(441, 3);
+            this.label3.Location = new System.Drawing.Point(411, 3);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.label3.Size = new System.Drawing.Size(91, 24);
@@ -361,32 +413,6 @@
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button9
-            // 
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.Location = new System.Drawing.Point(120, 17);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(17, 16);
-            this.button9.TabIndex = 2;
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // checkTreeView1
-            // 
-            this.checkTreeView1.AutoSize = true;
-            this.checkTreeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.checkTreeView1.Category = "File Types";
-            this.checkTreeView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.checkTreeView1.Location = new System.Drawing.Point(1, 1);
-            this.checkTreeView1.Margin = new System.Windows.Forms.Padding(21, 28, 21, 28);
-            this.checkTreeView1.MinimumSize = new System.Drawing.Size(0, 237);
-            this.checkTreeView1.Name = "checkTreeView1";
-            this.checkTreeView1.Padding = new System.Windows.Forms.Padding(40, 43, 40, 43);
-            this.checkTreeView1.Size = new System.Drawing.Size(126, 237);
-            this.checkTreeView1.Subcategory.Add(".txt");
-            this.checkTreeView1.TabIndex = 0;
             // 
             // dragControl1
             // 
@@ -431,6 +457,7 @@
             this.panel7.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -467,6 +494,7 @@
         private System.Windows.Forms.Label label2;
         private UserControls.CheckTreeView checkTreeView1;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

@@ -48,6 +48,8 @@ namespace Damato_App.UserControls
         {
             checkBox1Checked = _ApplicationSettings.LoginSettings.KeepLogdIn;
             numericUpDown1.Value = _ApplicationSettings.SearchSettings.ReturnAmount;
+            textBox1.Text = _ApplicationSettings.DownLoadedSettings.DownLoadFileLocation;
+                //C:\Users\Steven Bown\Desktop\Temp
         }
 
         public void update()
@@ -71,6 +73,11 @@ namespace Damato_App.UserControls
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             _ApplicationSettings.SearchSettings.ReturnAmount = Int32.Parse(numericUpDown1.Value.ToString());
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            _ApplicationSettings.DownLoadedSettings.DownLoadFileLocation = textBox1.Text;
         }
     }
 }

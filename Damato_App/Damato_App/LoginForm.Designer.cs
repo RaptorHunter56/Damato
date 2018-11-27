@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +55,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(242, 24);
+            this.panel1.Size = new System.Drawing.Size(280, 24);
             this.panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -68,12 +70,13 @@
             // 
             // button8
             // 
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Dock = System.Windows.Forms.DockStyle.Right;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
             this.button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button8.Location = new System.Drawing.Point(194, 0);
+            this.button8.Location = new System.Drawing.Point(232, 0);
             this.button8.Margin = new System.Windows.Forms.Padding(5);
             this.button8.Name = "button8";
             this.button8.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
@@ -84,11 +87,12 @@
             // 
             // button7
             // 
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Dock = System.Windows.Forms.DockStyle.Right;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(218, 0);
+            this.button7.Location = new System.Drawing.Point(256, 0);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(24, 24);
@@ -116,7 +120,7 @@
             this.textBox1.ForeColor = System.Drawing.Color.DarkGray;
             this.textBox1.Location = new System.Drawing.Point(94, 39);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 26);
+            this.textBox1.Size = new System.Drawing.Size(174, 26);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "Enter User";
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
@@ -133,7 +137,7 @@
             this.textBox2.ForeColor = System.Drawing.Color.DarkGray;
             this.textBox2.Location = new System.Drawing.Point(94, 67);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 26);
+            this.textBox2.Size = new System.Drawing.Size(174, 26);
             this.textBox2.TabIndex = 3;
             this.textBox2.Text = "Enter Password";
             this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
@@ -168,9 +172,9 @@
             this.checkBox1.Location = new System.Drawing.Point(99, 99);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(119, 22);
+            this.checkBox1.Size = new System.Drawing.Size(122, 22);
             this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Keep Loged In";
+            this.checkBox1.Text = "Stay Logged In";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -185,11 +189,41 @@
             this.label4.Text = "User or Password Incorrect";
             this.label4.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(12, 127);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(256, 56);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "LOGIN";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Location = new System.Drawing.Point(97, 195);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(91, 12);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "@GITHUB SOURCE";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OpenLink);
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(242, 129);
+            this.ClientSize = new System.Drawing.Size(280, 217);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
@@ -224,5 +258,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

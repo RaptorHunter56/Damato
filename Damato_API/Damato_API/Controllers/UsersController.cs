@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Damato_API.DataBase;
+using Damato_API.Settings;
+using Newtonsoft.Json;
 
 namespace Damato_API.Controllers
 {
@@ -22,7 +24,26 @@ namespace Damato_API.Controllers
             return new TokensController().NewToken(user)._Token;
         }
 
-        private DamatoDBContext db = new DamatoDBContext();
+        [HttpGet, Route("{token}/GetOutFiles")]
+        [ResponseType(typeof(List<string>))]
+        public IHttpActionResult GetOutFiles(string token)
+        {
+            Token _token = db.Tokens.Include(t => t.User).Single(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+            string json = System.IO.File.ReadAllText("ApplicationSettings.json");
+            OutSettings Settings = JsonConvert.DeserializeObject<OutSettings>(json);
+            List<string> s = new List<string>();
+            foreach (var item in Settings.FileOut.Where(f => f.Value == _token.User.ID))
+            {
+                s.Add(item.Key);
+            }
+            return Ok(s);
+        }
+
+        private DAMContext db = new DAMContext();
 
         // GET: api/Users
         public IQueryable<User> GetUsers()
