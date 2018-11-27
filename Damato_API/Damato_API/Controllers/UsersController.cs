@@ -22,7 +22,7 @@ namespace Damato_API.Controllers
             return new TokensController().NewToken(user)._Token;
         }
 
-        private DAMContext db = new DAMContext();
+        private DamatoDBContext db = new DamatoDBContext();
 
         // GET: api/Users
         public IQueryable<User> GetUsers()

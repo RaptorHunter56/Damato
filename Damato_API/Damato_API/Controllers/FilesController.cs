@@ -37,7 +37,7 @@ namespace Damato_API.Controllers
             return Ok(files);
         }
 
-        private DAMContext db = new DAMContext();
+        private DamatoDBContext db = new DamatoDBContext();
 
         // GET: api/Files
         public IQueryable<File> GetFiles()

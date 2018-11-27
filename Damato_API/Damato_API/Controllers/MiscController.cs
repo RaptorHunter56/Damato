@@ -32,7 +32,7 @@ namespace Damato_API.Controllers
             return Ok(vs.Distinct().ToList());
         }
 
-        private DAMContext db = new DAMContext();
+        private DamatoDBContext db = new DamatoDBContext();
 
         protected override void Dispose(bool disposing)
         {
