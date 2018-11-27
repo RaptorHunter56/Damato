@@ -9,6 +9,7 @@ namespace Damato_API.Migrations
     {
         public Configuration()
         {
+
             AutomaticMigrationsEnabled = false;
         }
 
