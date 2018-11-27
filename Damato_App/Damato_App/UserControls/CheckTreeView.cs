@@ -117,5 +117,16 @@ namespace Damato_App.UserControls
                     subcategory[i].Visible = VisibleSub;
             }
         }
+
+        internal List<string> GetAllChecked()
+        {
+            List<string> Return = new List<string>();
+            for (int i = 0; i <= (subcategory.Count - 1); i++)
+            {
+                if (subcategory[i].Checked)
+                    Return.Add(subcategory[i].Text);
+            }
+            return Return;
+        }
     }
 }

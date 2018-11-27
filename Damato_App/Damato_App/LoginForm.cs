@@ -60,13 +60,26 @@ namespace Damato_App
 
             //label4.Visible = true;
             this.Cursor = Cursors.WaitCursor;
+            button1.Cursor = Cursors.WaitCursor;
+            button1.Click -= new System.EventHandler(button1_Click);
+            //button1.Click -= 
             MethodInvoker methodInvokerDelegate = async delegate ()
             {
                 string json = JsonConvert.SerializeObject(applicationSettings);
                 File.WriteAllText("ApplicationSettings.json", json);
-                string token = await API.GetNewToken(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.Password);
+                string token;
+                try
+                {
+                    token = await API.GetNewToken(applicationSettings.LoginSettings.UserName, applicationSettings.LoginSettings.Password);
+                }
+                catch
+                {
+                    token = "";
+                }
                 this.Cursor = Cursors.Default;
-                if (token.Length == 12)
+                button1.Cursor = Cursors.Default;
+                button1.Click += new System.EventHandler(button1_Click);
+                if (token.Length == 10)
                 {
                     MainForm main = new MainForm(token);
                     this.Hide();
@@ -75,6 +88,8 @@ namespace Damato_App
                 else
                 {
                     label4.Visible = true;
+                    textBox1.Enabled = true;
+                    textBox2.Enabled = true;
                     this.Show();
                 }
             };

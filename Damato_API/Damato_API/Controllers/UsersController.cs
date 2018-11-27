@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Damato_API.DataBase;
+using Damato_API.Settings;
+using Newtonsoft.Json;
 
 namespace Damato_API.Controllers
 {
@@ -20,6 +22,38 @@ namespace Damato_API.Controllers
         public string GetToken(User user)
         {
             return new TokensController().NewToken(user)._Token;
+        }
+
+        [HttpGet, Route("{token}/GetOutFiles")]
+        [ResponseType(typeof(List<string>))]
+        public IHttpActionResult GetOutFiles(string token)
+        {
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+            string json = System.IO.File.ReadAllText($@"{FilesController.PathLocation}\ApplicationSettings.json");
+            OutSettings Settings = JsonConvert.DeserializeObject<OutSettings>(json);
+            List<string> s = new List<string>();
+            foreach (var item in Settings.FileOut)
+            {
+                s.Add(item.Key + $"[{item.Value}]");
+            }
+            return Ok(s);
+        }
+        
+        [HttpGet, Route("{token}/Getlevel")]
+        [ResponseType(typeof(string))]
+        public IHttpActionResult Getlevel(string token)
+        {
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+
+            return Ok(_token.User.Level.ToString());
         }
 
         private DAMContext db = new DAMContext();
