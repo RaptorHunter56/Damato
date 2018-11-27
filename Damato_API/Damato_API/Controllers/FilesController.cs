@@ -17,8 +17,7 @@ namespace Damato_API.Controllers
     [RoutePrefix("api/Files")]
     public class FilesController : ApiController
     {
-        public static string PathLocation = @"https://damatoapi.file.core.windows.net/test/test/";
-        public static string Key = @"?sv=2017-04-17&si=API&sr=s&sig=bUVAzUJp1Kv6u1kUCnnaJ26LEItGjzIixhfrPpXvl3I%3D";
+        public static string PathLocation = @"D:\home\site\wwwroot\Damato_API\";
 
         // GET: api/Files/2460348+13/GetRecentFiles
         [HttpGet, Route("{token}/GetRecentFiles")]
@@ -59,7 +58,7 @@ namespace Damato_API.Controllers
             OutSettings o;
             try
             {
-                string json1 = System.IO.File.ReadAllText($@"{PathLocation}/ApplicationSettings.json{FilesController.Key}");
+                string json1 = System.IO.File.ReadAllText($@"{PathLocation}\ApplicationSettings.json");
                 o = JsonConvert.DeserializeObject<OutSettings>(json1);
             }
             catch (Exception)
@@ -68,8 +67,8 @@ namespace Damato_API.Controllers
             }
             o.FileOut.Add(_file.PathParts.Last(), _token.User.ID);
             string json = JsonConvert.SerializeObject(o);
-            System.IO.File.WriteAllText($@"{PathLocation}/ApplicationSettings.json{FilesController.Key}", json);
-            byte[] temp = System.IO.File.ReadAllBytes(_file.Path + FilesController.Key);
+            System.IO.File.WriteAllText($@"{PathLocation}\ApplicationSettings.json", json);
+            byte[] temp = System.IO.File.ReadAllBytes(_file.Path);
             return Ok(Convert.ToBase64String(temp));
 
         }
@@ -87,13 +86,13 @@ namespace Damato_API.Controllers
 
             if (returnfile == "true")
             {
-                if (db.Files.Where(f => f.Path == $@"{PathLocation}/{file.Path}" && f.WLevel >= _token.User.Level).FirstOrDefault() == null)
+                if (db.Files.Where(f => f.Path == $@"{PathLocation}\{file.Path}" && f.WLevel >= _token.User.Level).FirstOrDefault() == null)
                     return Content(HttpStatusCode.Unauthorized, "File Does Not Exist");
             }
             else
             {
                 int coppy = 1;
-                while (System.IO.File.Exists($@"{PathLocation}/{file.Path}{FilesController.Key}"))
+                while (System.IO.File.Exists($@"{PathLocation}\{file.Path}"))
                 {
                     try
                     {
@@ -107,21 +106,21 @@ namespace Damato_API.Controllers
                 }
             }
 
-            System.IO.File.WriteAllBytes($@"{PathLocation}/{file.Path}{FilesController.Key}", file.File);
+            System.IO.File.WriteAllBytes($@"{PathLocation}\{file.Path}", file.File);
             
             Damato_API.DataBase.File file2 = new Damato_API.DataBase.File()
             {
-                Path = $@"{PathLocation}/{file.Path}",
+                Path = $@"{PathLocation}\{file.Path}",
                 Level = $"{_token.User.Level},{_token.User.Level},{_token.User.Level}"
             };
             
             if (returnfile == "true")
             {
-                string json = System.IO.File.ReadAllText($@"{PathLocation}/ApplicationSettings.json{FilesController.Key}");
+                string json = System.IO.File.ReadAllText($@"{PathLocation}\ApplicationSettings.json");
                 OutSettings o = JsonConvert.DeserializeObject<OutSettings>(json);
                 o.FileOut.Remove(file2.PathParts.Last());
                 json = JsonConvert.SerializeObject(o);
-                System.IO.File.WriteAllText($@"{PathLocation}/ApplicationSettings.json{FilesController.Key}", json);
+                System.IO.File.WriteAllText($@"{PathLocation}\ApplicationSettings.json", json);
             }
             else
             {
