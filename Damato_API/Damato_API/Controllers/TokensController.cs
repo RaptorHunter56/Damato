@@ -35,7 +35,7 @@ namespace Damato_API.Controllers
             return token;
         }
 
-        private DamatoDBContext db = new DamatoDBContext();
+        private DAMContext db = new DAMContext();
 
         // GET: api/Tokens
         public IQueryable<Token> GetTokens()

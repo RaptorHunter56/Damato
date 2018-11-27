@@ -5,7 +5,7 @@ namespace Damato_API.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Damato_API.DataBase.DamatoDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Damato_API.DataBase.DAMContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Damato_API.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Damato_API.DataBase.DamatoDBContext context)
+        protected override void Seed(Damato_API.DataBase.DAMContext context)
         {
             //  This method will be called after migrating to the latest version.
 
