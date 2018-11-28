@@ -118,16 +118,15 @@ namespace Damato_App
                 {
                     AddTags a = new AddTags() { TopText = item };
                     a.ShowDialog();
-                    System.Windows.Forms.Application.Exit();
 
                     try
                     {
-                        await API.UploadFile(Token, item);
+                        await API.UploadFile(Token, item, a.vss);
                     }
                     catch
                     {
                         Token = await API.GetNewToken(ApplicationSettings.LoginSettings.UserName, ApplicationSettings.LoginSettings.Password);
-                        await API.UploadFile(Token, item);
+                        await API.UploadFile(Token, item, a.vss);
                     }
                     List<File> names;
                     try
@@ -823,6 +822,18 @@ namespace Damato_App
             //{ "Path": "string", "File": "AxD//w==" }
             HttpContent _content = new StringContent($"{"{"} \"Path\": \"{filepath.Split('\\').Last()}\", \"File\": \"{ Convert.ToBase64String(System.IO.File.ReadAllBytes(filepath))}\" {"}"}", Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _api.PostAsync($"Files/{token}/UploadFile/{reupload}", _content);
+            if (response.IsSuccessStatusCode)
+                return true;
+            else
+                throw new Exception();
+            //
+        }
+        public static async Task<bool> UploadFile(string token, string filepath, List<string> reupload)
+        {
+            byte[] temp = System.IO.File.ReadAllBytes(filepath);//{filepath.Split('\\').Last()}
+            //{ "Path": "string", "File": "AxD//w==" }
+            HttpContent _content = new StringContent($"{"{"} \"Path\": \"{filepath.Split('\\').Last()}\", \"File\": \"{ Convert.ToBase64String(System.IO.File.ReadAllBytes(filepath))}\" {"}"}", Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _api.PostAsync($"Files/{token}/UploadFileTaged/false", _content);
             if (response.IsSuccessStatusCode)
                 return true;
             else
