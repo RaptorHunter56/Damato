@@ -17,7 +17,7 @@ namespace Damato_API.Controllers
     [RoutePrefix("api/Files")]
     public class FilesController : ApiController
     {
-        public static string PathLocation = @"D:\home\site\wwwroot\Damato_API\";
+        public static string PathLocation = @"D:\home\site\wwwroot\Damato_API";
 
         // GET: api/Files/2460348+13/GetRecentFiles
         [HttpGet, Route("{token}/GetRecentFiles")]
@@ -30,7 +30,7 @@ namespace Damato_API.Controllers
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
-            IEnumerable<File> files = db.Files.Include(f => f.User).OrderBy(f => f.DateAdded);
+            IEnumerable<File> files = db.Files.Include(f => f.User).Include(f => f.MainTags).OrderBy(f => f.DateAdded);
             files = files.Reverse().Take(amount);
             foreach (var item in files)
             {
@@ -177,15 +177,6 @@ namespace Damato_API.Controllers
                 Level = $"{_token.User.Level},{_token.User.Level},{_token.User.Level}"
             };
 
-            foreach (var item in file.Tags)
-            {
-                Damato_API.DataBase.Tag s = new Tag()
-                {
-                    _Tag = item
-                };
-                file2.MainTags.Add(s);
-            }
-
             if (returnfile == "true")
             {
                 string json = System.IO.File.ReadAllText($@"{PathLocation}\ApplicationSettings.json");
@@ -198,6 +189,20 @@ namespace Damato_API.Controllers
             {
                 db.Files.Add(file2);
                 db.SaveChanges();
+                db.Entry(file2).Reload();
+                foreach (var item in file.Tags)
+                {
+                    db.Entry(file2).Reload();
+                    Damato_API.DataBase.Tag s = new Tag()
+                    {
+                        _Tag = item,
+                        File_ID = file2
+                    };
+                    db.Tags.Add(s);
+                    db.SaveChanges();
+                    db.Entry(s).Reload();
+                    db.Entry(file2).Reload();
+                }
                 db.Entry(file2).Reload();
                 var user = db.Users.ToList().FirstOrDefault(u => u.ID == _token.User.ID);
                 file2.User = user;

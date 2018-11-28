@@ -118,7 +118,6 @@ namespace Damato_App
                 {
                     AddTags a = new AddTags() { TopText = item };
                     a.ShowDialog();
-                    System.Windows.Forms.Application.Exit();
 
                     try
                     {

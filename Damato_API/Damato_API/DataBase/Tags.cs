@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,5 +14,8 @@ namespace Damato_API.DataBase
         public int Key { get; set; }
         public string _Tag { get; set; }
         public DateTime DateAdded { get; set; }
+
+        [JsonIgnore]
+        public File File_ID { get; set; }
     }
 }
