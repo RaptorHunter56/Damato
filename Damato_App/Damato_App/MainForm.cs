@@ -212,7 +212,6 @@ namespace Damato_App
                     view2.Size = new System.Drawing.Size(126, 90);
                     view2.Subcategory = filetypes;
                     view2.TabIndex = 0;
-                    panel6.Controls.Clear();
                     panel6.Controls.Add(view2);
                     this.Cursor = Cursors.Default;
                     foreach (var item2 in panel3.Controls)
