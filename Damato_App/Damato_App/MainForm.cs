@@ -119,7 +119,10 @@ namespace Damato_App
                     AddTags a = new AddTags() { TopText = item, Token = Token };
                     a.ShowDialog();
                     if (a.vss.Count() == 0)
+                    {
+                        this.Cursor = Cursors.Default;
                         return;
+                    }
                     try
                     {
                         await API.UploadFile(Token, item, a.vss);
@@ -267,12 +270,13 @@ namespace Damato_App
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (issettings)
+            if (issettings || ispre)
             {
                 string json = JsonConvert.SerializeObject(ApplicationSettings);
                 System.IO.File.WriteAllText("ApplicationSettings.json", json);
             }
             issettings = false;
+            ispre = false;
             isdonwnload = false;
             button1.Click += new System.EventHandler(this.button1_Click);
             panel3.Controls.Clear();
@@ -601,7 +605,7 @@ namespace Damato_App
         public bool isdonwnload = false;
         private void button4_Click(object sender, EventArgs e)
         {
-            if (issettings)
+            if (issettings || ispre)
             {
                 string json = JsonConvert.SerializeObject(ApplicationSettings);
                 System.IO.File.WriteAllText("ApplicationSettings.json", json);
@@ -835,6 +839,7 @@ namespace Damato_App
         private void button9_Click(object sender, EventArgs e)
         {
             issettings = false;
+            ispre = false;
             isdonwnload = false;
             button1.Click += new System.EventHandler(this.button1_Click);
             panel3.Controls.Clear();
@@ -848,7 +853,17 @@ namespace Damato_App
 
                 foreach (var item in panel6.Controls)
                 {
-                    ss.AddRange((item as CheckTreeView).GetAllChecked());
+                    if ((item as CheckTreeView).Category == "Tags")
+                    {
+                        foreach (var item3 in (item as CheckTreeView).GetAllChecked())
+                        {
+                            ss.Add("*" + item3);
+                        }
+                    }
+                    else
+                    {
+                        ss.AddRange((item as CheckTreeView).GetAllChecked());
+                    }
                 }
 
                 List<File> names;
