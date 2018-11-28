@@ -583,7 +583,6 @@ namespace Damato_App
                 view2.Size = new System.Drawing.Size(126, 90);
                 view2.Subcategory = filetypes;
                 view2.TabIndex = 0;
-                panel6.Controls.Clear();
                 panel6.Controls.Add(view2);
                 this.Cursor = Cursors.Default;
                 foreach (var item2 in panel3.Controls)
@@ -884,7 +883,7 @@ namespace Damato_App
             Hidden = false;
             timer1.Start();
             panel3.Controls.Clear();
-            panel3.Controls.Add(new TemplatesControl());
+            panel3.Controls.Add(new TemplatesControl() { Dock = DockStyle.Fill, Token = Token});
         }
     }
 
@@ -904,6 +903,7 @@ namespace Damato_App
 
         public static async Task<List<string>> GetAllFilesTypes(string token)
         {
+            //Misc/3124084%2B00/GetAllFilesTags
             HttpResponseMessage response = await _api.GetAsync($"Misc/{token}/GetAllFilesTypes");
             if (response.IsSuccessStatusCode)
                 return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<List<string>>();

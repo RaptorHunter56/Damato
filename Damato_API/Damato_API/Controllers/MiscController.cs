@@ -25,7 +25,16 @@ namespace Damato_API.Controllers
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
-            var result = db.Files.Where(f => f.RLevel >= _token.User.Level).Select(f => f.Path);
+            var result1 = db.Files;
+            List<File> result2 = new List<File>();
+            foreach (var item in result1)
+            {
+                if (item.RLevel >= _token.User.Level)
+                    result2.Add(item);
+            }
+            List<string> result = new List<string>();
+            foreach (var item in result1)
+            { result.Add(item.Path); }
             List<string> vs = new List<string>();
             foreach (var item in result)
             { vs.Add($".{item.Split('.').Last()}"); }
