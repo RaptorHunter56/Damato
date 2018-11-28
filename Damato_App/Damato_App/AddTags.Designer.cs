@@ -38,6 +38,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dragControl1 = new Damato_App.UserControls.DragControl();
+            this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -177,12 +178,28 @@
             // 
             this.dragControl1.SelectControl = this.label1;
             // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(5, 67);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(26, 24);
+            this.button2.TabIndex = 10;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            // 
             // AddTags
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(512, 263);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -211,5 +228,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button3;
         private UserControls.DragControl dragControl1;
+        private System.Windows.Forms.Button button2;
     }
 }

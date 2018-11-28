@@ -224,7 +224,7 @@ namespace Damato_API.Controllers
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
-            IEnumerable<File> files = db.Files.Include(f => f.User).OrderBy(f => f.DateAdded);
+            IEnumerable<File> files = db.Files.Include(f => f.User).Include(f => f.MainTags).OrderBy(f => f.DateAdded);
             List<File> temp = new List<File>();
             foreach (var item in search.Where(s => s[0] == '.'))
             {
@@ -232,6 +232,10 @@ namespace Damato_API.Controllers
             }
             if (temp.Count() > 0)
                 files = temp;
+            foreach (var item in search.Where(s => s[0] == '*'))
+            {
+                files = files.Where(f => (f.MainTags.Where(g => g._Tag == item.Substring(1)).Count() > 0));
+            }
             foreach (var item in search.Where(s => s[0] != '.'))
             {
                 files = files.Where(f => (f.Path.Split('\\').Last().Contains(item)));

@@ -75,6 +75,7 @@ namespace Damato_App
             // 
             xtableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             xtableLayoutPanel2.ColumnCount = 3;
+            xtableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             xtableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             xtableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             xtableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());

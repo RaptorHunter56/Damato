@@ -73,6 +73,7 @@
     <Compile Include="Cipher.cs" />
     <Compile Include="DataBase\Context.cs" />
     <Compile Include="DataBase\File.cs" />
+    <Compile Include="DataBase\Presets.cs" />
     <Compile Include="DataBase\Tags.cs" />
     <Compile Include="DataBase\User.cs" />
     <Compile Include="LoginForm.cs">
@@ -110,6 +111,12 @@
     <Compile Include="UserControls\SettingsControl.Designer.cs">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TemplatesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TemplatesControl.Designer.cs">
+      <DependentUpon>TemplatesControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddTags.resx">
       <DependentUpon>AddTags.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SettingsControl.resx">
       <DependentUpon>SettingsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TemplatesControl.resx">
+      <DependentUpon>TemplatesControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="img\FileType\%40default.Image.png" />
     <None Include="img\FileType\%40Delete.Image.png" />

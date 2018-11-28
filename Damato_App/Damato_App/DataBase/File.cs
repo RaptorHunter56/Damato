@@ -46,5 +46,7 @@ namespace Damato_App.DataBase
         }
 
         public User User { get; set; }
+
+        public List<Tag> MainTags { get; set; }
     }
 }

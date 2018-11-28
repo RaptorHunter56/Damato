@@ -17,6 +17,7 @@ namespace Damato_API.DataBase
         public DbSet<Token> Tokens { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Presets> Presetss { get; set; }
 
         public static string Password()
         {
@@ -28,7 +29,6 @@ namespace Damato_API.DataBase
         }
         public DAMContext()
         {
-            this.Database.Connection.ConnectionString = $"Data Source=damatoapidbserver.database.windows.net,1433;Initial Catalog=DamatoAPI_db;Persist Security Info=False;User ID=Damato;Password=Sk6JGyCNE37V8GLupT6KE4TCN96bcVKN2pkRdu86EKeTmBvX4ve3RZwzVcSHHFW2W3ghb;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
         }
     }
 }

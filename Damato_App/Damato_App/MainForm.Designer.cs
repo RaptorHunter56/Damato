@@ -46,12 +46,13 @@
             this.PanelSlide = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.checkTreeView1 = new Damato_App.UserControls.CheckTreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkTreeView1 = new Damato_App.UserControls.CheckTreeView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.PanelSlide.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -269,27 +269,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            //this.panel6.Controls.Add(this.checkTreeView1);
             this.panel6.Location = new System.Drawing.Point(7, 41);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(1);
             this.panel6.Size = new System.Drawing.Size(128, 366);
             this.panel6.TabIndex = 1;
-            // 
-            // checkTreeView1
-            // 
-            this.checkTreeView1.AutoSize = true;
-            this.checkTreeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.checkTreeView1.Category = "File Types";
-            this.checkTreeView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.checkTreeView1.Location = new System.Drawing.Point(1, 1);
-            this.checkTreeView1.Margin = new System.Windows.Forms.Padding(48, 66, 48, 66);
-            this.checkTreeView1.MinimumSize = new System.Drawing.Size(0, 562);
-            this.checkTreeView1.Name = "checkTreeView1";
-            this.checkTreeView1.Padding = new System.Windows.Forms.Padding(90, 102, 90, 102);
-            this.checkTreeView1.Size = new System.Drawing.Size(126, 562);
-            this.checkTreeView1.Subcategory.Add(".txt");
-            this.checkTreeView1.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -307,6 +291,21 @@
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            // 
+            // checkTreeView1
+            // 
+            this.checkTreeView1.AutoSize = true;
+            this.checkTreeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.checkTreeView1.Category = "File Types";
+            this.checkTreeView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkTreeView1.Location = new System.Drawing.Point(1, 1);
+            this.checkTreeView1.Margin = new System.Windows.Forms.Padding(48, 66, 48, 66);
+            this.checkTreeView1.MinimumSize = new System.Drawing.Size(0, 562);
+            this.checkTreeView1.Name = "checkTreeView1";
+            this.checkTreeView1.Padding = new System.Windows.Forms.Padding(90, 102, 90, 102);
+            this.checkTreeView1.Size = new System.Drawing.Size(126, 562);
+            this.checkTreeView1.Subcategory.Add(".txt");
+            this.checkTreeView1.TabIndex = 0;
             // 
             // panel4
             // 
@@ -353,15 +352,31 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(535, 30);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(535, 58);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.MouseEnter += new System.EventHandler(this.tableLayoutPanel1_MouseEnter);
             this.tableLayoutPanel1.MouseLeave += new System.EventHandler(this.tableLayoutPanel1_MouseLeave);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label4, 2);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label4.Location = new System.Drawing.Point(33, 33);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(0, 2, 2, 2);
+            this.label4.Size = new System.Drawing.Size(67, 21);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Category";
             // 
             // pictureBox3
             // 
@@ -451,8 +466,6 @@
             this.panel2.ResumeLayout(false);
             this.PanelSlide.ResumeLayout(false);
             this.PanelSlide.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -496,6 +509,7 @@
         private UserControls.CheckTreeView checkTreeView1;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

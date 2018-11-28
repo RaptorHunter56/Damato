@@ -25,10 +25,41 @@ namespace Damato_API.Controllers
             if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
                 return Content(HttpStatusCode.Unauthorized, "Token Expired");
 
-            var result = db.Files.Select(f => f.Path);
+            var result = db.Files.Where(f => f.RLevel >= _token.User.Level).Select(f => f.Path);
             List<string> vs = new List<string>();
             foreach (var item in result)
             { vs.Add($".{item.Split('.').Last()}"); }
+            return Ok(vs.Distinct().ToList());
+        }
+
+        [HttpGet, Route("{token}/GetAllFilesTags")]
+        [ResponseType(typeof(List<string>))]
+        public IHttpActionResult GetAllFilesTags(string token)
+        {
+            Token _token = db.Tokens.Include(t => t.User).FirstOrDefault(t => t._Token == token);
+            if (_token == null)
+                return Content(HttpStatusCode.Unauthorized, "Token Does Not Exist");
+            if (_token.DateExpiered.CompareTo(DateTime.Now) < 0)
+                return Content(HttpStatusCode.Unauthorized, "Token Expired");
+
+            var result1 = db.Files.Include(f => f.MainTags);
+            List<File> resultf = new List<File>();
+            foreach (var item in result1)
+            {
+                try
+                {  if (item.RLevel >= _token.User.Level) resultf.Add(item); }
+                catch { }
+            }
+            List<Tag> result = new List<Tag>();
+            foreach (var item in resultf)
+            {
+                try
+                { result.AddRange(item.MainTags); }
+                catch { }
+            }
+            List<string> vs = new List<string>();
+            foreach (var item in result)
+            { vs.Add($"{item._Tag}"); }
             return Ok(vs.Distinct().ToList());
         }
 

@@ -180,6 +180,41 @@ namespace Damato_App
                     {
                         (item2 as TableLayoutPanel).Controls[0].Visible = false;
                     }
+
+                    try
+                    {
+                        filetypes = await API.GetAllFilesTags(Token);
+                    }
+                    catch
+                    {
+                        Token = await API.GetNewToken(ApplicationSettings.LoginSettings.UserName, ApplicationSettings.LoginSettings.Password);
+                        filetypes = await API.GetAllFilesTags(Token);
+                    }
+                    filetypes.Sort();
+                    filetypes.Reverse();
+                    CheckTreeView view2 = new CheckTreeView();
+                    // 
+                    // checkTreeView1
+                    // 
+                    view2.AutoSize = true;
+                    view2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+                    view2.Category = "Tags";
+                    view2.Dock = System.Windows.Forms.DockStyle.Top;
+                    view2.Location = new System.Drawing.Point(1, 1);
+                    view2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+                    view2.MinimumSize = new System.Drawing.Size(0, 42);
+                    view2.Name = "checkTreeView1";
+                    view2.Padding = new System.Windows.Forms.Padding(8);
+                    view2.Size = new System.Drawing.Size(126, 90);
+                    view2.Subcategory = filetypes;
+                    view2.TabIndex = 0;
+                    panel6.Controls.Clear();
+                    panel6.Controls.Add(view2);
+                    this.Cursor = Cursors.Default;
+                    foreach (var item2 in panel3.Controls)
+                    {
+                        (item2 as TableLayoutPanel).Controls[0].Visible = false;
+                    }
                 };
 
                 if (this.InvokeRequired)
@@ -358,6 +393,7 @@ namespace Damato_App
             PictureBox pictureBoxx2 = new PictureBox();
             Label label1x = new Label();
             Label label2x = new Label();
+            Label label4x = new Label();
             // 
             // pictureBox2
             // 
@@ -413,30 +449,54 @@ namespace Damato_App
             tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             tableLayoutPanelx.Controls.Add(pictureBoxx2, 3, 0);
             tableLayoutPanelx.Controls.Add(label2x, 2, 0);
             tableLayoutPanelx.Controls.Add(label1x, 1, 0);
             tableLayoutPanelx.Controls.Add(pictureBoxx, 0, 0);
+            tableLayoutPanelx.Controls.Add(label4x, 1, 1);
             tableLayoutPanelx.Dock = System.Windows.Forms.DockStyle.Top;
             tableLayoutPanelx.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanelx.Name = "tableLayoutPanelx";
-            tableLayoutPanelx.RowCount = 1;
-            tableLayoutPanelx.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanelx.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tableLayoutPanelx.Size = new System.Drawing.Size(535, 30);
             tableLayoutPanelx.TabIndex = 0;
-            tableLayoutPanelx.MouseEnter += new System.EventHandler(this.tableLayoutPanel1_MouseEnter);
-            tableLayoutPanelx.MouseLeave += new System.EventHandler(this.tableLayoutPanel1_MouseLeave);
+            label1x.MouseEnter += new System.EventHandler(this.tableLayoutPanel1_MouseEnter);
+            label1x.MouseLeave += new System.EventHandler(this.tableLayoutPanel1_MouseLeave);
+            // 
+            // label4
+            // 
+            label4x.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            label4x.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(this.label4, 2);
+            label4x.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            label4x.ForeColor = System.Drawing.SystemColors.ControlDark;
+            label4x.Location = new System.Drawing.Point(33, 33);
+            label4x.Name = "label4";
+            label4x.Padding = new System.Windows.Forms.Padding(0, 2, 2, 2);
+            label4x.Size = new System.Drawing.Size(67, 21);
+            label4x.TabIndex = 6;
+            string total = "";
+            foreach (var item22 in item.MainTags)
+            {
+                total += " " + item22._Tag + ", ";
+            }
+            total = total.Trim().Trim(',');
+            label4x.Text = total;
 
             panel3.Controls.Add(tableLayoutPanelx);
         }
         private void tableLayoutPanel1_MouseEnter(object sender, EventArgs e)
         {
-            (sender as TableLayoutPanel).BackColor = Color.FromArgb(35, 35, 35);
+            ((sender as Label).Parent as TableLayoutPanel).BackColor = Color.FromArgb(35, 35, 35);
+            ((sender as Label).Parent as TableLayoutPanel).Size = new System.Drawing.Size(535, 58);
         }
         private void tableLayoutPanel1_MouseLeave(object sender, EventArgs e)
         {
-            (sender as TableLayoutPanel).BackColor = Color.FromArgb(31, 31, 31);
+            ((sender as Label).Parent as TableLayoutPanel).BackColor = Color.FromArgb(31, 31, 31);
+            ((sender as Label).Parent as TableLayoutPanel).Size = new System.Drawing.Size(535, 30);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -494,6 +554,41 @@ namespace Damato_App
                 foreach (var item in panel3.Controls)
                 {
                     (item as TableLayoutPanel).Controls[0].Visible = false;
+                }
+
+                try
+                {
+                    filetypes = await API.GetAllFilesTags(Token);
+                }
+                catch
+                {
+                    Token = await API.GetNewToken(ApplicationSettings.LoginSettings.UserName, ApplicationSettings.LoginSettings.Password);
+                    filetypes = await API.GetAllFilesTags(Token);
+                }
+                filetypes.Sort();
+                filetypes.Reverse();
+                CheckTreeView view2 = new CheckTreeView();
+                // 
+                // checkTreeView1
+                // 
+                view2.AutoSize = true;
+                view2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+                view2.Category = "Tags";
+                view2.Dock = System.Windows.Forms.DockStyle.Top;
+                view2.Location = new System.Drawing.Point(1, 1);
+                view2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+                view2.MinimumSize = new System.Drawing.Size(0, 42);
+                view2.Name = "checkTreeView1";
+                view2.Padding = new System.Windows.Forms.Padding(8);
+                view2.Size = new System.Drawing.Size(126, 90);
+                view2.Subcategory = filetypes;
+                view2.TabIndex = 0;
+                panel6.Controls.Clear();
+                panel6.Controls.Add(view2);
+                this.Cursor = Cursors.Default;
+                foreach (var item2 in panel3.Controls)
+                {
+                    (item2 as TableLayoutPanel).Controls[0].Visible = false;
                 }
             };
 
@@ -805,6 +900,15 @@ namespace Damato_App
                 throw new Exception();
             //return new List<string>();
         }
+        public static async Task<List<string>> GetAllFilesTags(string token)
+        {
+            HttpResponseMessage response = await _api.GetAsync($"Misc/{token}/GetAllFilesTags");
+            if (response.IsSuccessStatusCode)
+                return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<List<string>>();
+            else
+                throw new Exception();
+            //return new List<string>();
+        }
 
         public static async Task<string> GetNewToken(string name, string password)
         {
@@ -832,7 +936,14 @@ namespace Damato_App
         {
             byte[] temp = System.IO.File.ReadAllBytes(filepath);//{filepath.Split('\\').Last()}
             //{ "Path": "string", "File": "AxD//w==" }
-            HttpContent _content = new StringContent($"{"{"} \"Path\": \"{filepath.Split('\\').Last()}\", \"File\": \"{ Convert.ToBase64String(System.IO.File.ReadAllBytes(filepath))}\" {"}"}", Encoding.UTF8, "application/json");
+            //{ "Path": "string", "File": "AxD//w==", Tags": [ "Test20",  "Test20"] }
+            string tt = ", \"Tags\": [ ";
+            foreach (var item in reupload)
+            {
+                tt += $"\"{item}\", ";
+            }
+            tt = tt.TrimEnd().TrimEnd(',') + ']';
+            HttpContent _content = new StringContent($"{"{"} \"Path\": \"{filepath.Split('\\').Last()}\", \"File\": \"{ Convert.ToBase64String(System.IO.File.ReadAllBytes(filepath))}\" {tt} {"}"}", Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _api.PostAsync($"Files/{token}/UploadFileTaged/false", _content);
             if (response.IsSuccessStatusCode)
                 return true;
@@ -904,5 +1015,36 @@ namespace Damato_App
         //    }
         //    return vsf;
         //}
+
+
+        public static async Task<bool> DeletePresets(string token, string filename, string filepath)
+        {
+            //api/Files/0132995%2B13/DownloadFile?filename=2.txt
+            HttpResponseMessage response = await _api.GetAsync($"Presets/{token}/DeletePresets/{filename}");
+            // 
+            return true;
+        }
+
+        public static async Task<int> PostPresets(string token, string filename, Presets filepath)
+        {
+            //api/Files/0132995%2B13/DownloadFile?filename=2.txt
+            HttpResponseMessage response = await _api.PostAsync($"Presets/{token}/PostPresets", new StringContent(JArray.FromObject(filepath).ToString()));
+            if (response.IsSuccessStatusCode)
+                return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<Presets>().ID;
+            else
+                throw new Exception();
+
+
+        }
+
+        public static async Task<List<Presets>> GetPresetss(string token, string filename)
+        {
+            //api/Files/0132995%2B13/DownloadFile?filename=2.txt
+            HttpResponseMessage response = await _api.GetAsync($"Presets/{token}/GetPresetss");
+            // 
+            if (response.IsSuccessStatusCode)
+            return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<List<Presets>>();
+            else
+                throw new Exception();
+        }
     }
-}
