@@ -29,7 +29,7 @@ namespace Damato_API.DataBase
         }
         public DAMContext()
         {
-            this.Database.Connection.ConnectionString = $"Data Source=damatoapidbserver.database.windows.net,1433;Initial Catalog=DamatoAPI_db;Persist Security Info=False;User ID=Damato;Password=Password();MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+            this.Database.Connection.ConnectionString = $"Data Source=damatoapidbserver.database.windows.net,1433;Initial Catalog=DamatoAPI_db;Persist Security Info=False;User ID=Damato;Password={Password()};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
         }
     }
 }
