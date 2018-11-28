@@ -15,7 +15,8 @@
     <AssemblyName>Damato_API</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -154,6 +155,10 @@
     <Compile Include="Migrations\201811272331388_Tags_Edit.Designer.cs">
       <DependentUpon>201811272331388_Tags_Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811280604273_Pre_Added.cs" />
+    <Compile Include="Migrations\201811280604273_Pre_Added.Designer.cs">
+      <DependentUpon>201811280604273_Pre_Added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\Settings.cs" />
@@ -203,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811272331388_Tags_Edit.resx">
       <DependentUpon>201811272331388_Tags_Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811280604273_Pre_Added.resx">
+      <DependentUpon>201811280604273_Pre_Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

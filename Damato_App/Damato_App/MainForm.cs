@@ -875,6 +875,17 @@ namespace Damato_App
             else
                 methodInvokerDelegate();
         }
+
+        public bool ispre = false;
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ispre = true;
+            button1.Click -= new System.EventHandler(this.button1_Click);
+            Hidden = false;
+            timer1.Start();
+            panel3.Controls.Clear();
+            panel3.Controls.Add(new TemplatesControl());
+        }
     }
 
     public static class API
@@ -966,7 +977,7 @@ namespace Damato_App
             // 
             return true;
         }
-        
+
         public static async Task<List<string>> GetOutFiles(string token)
         {
             HttpResponseMessage response = await _api.GetAsync($"Users/{token}/GetOutFiles");
@@ -1043,8 +1054,9 @@ namespace Damato_App
             HttpResponseMessage response = await _api.GetAsync($"Presets/{token}/GetPresetss");
             // 
             if (response.IsSuccessStatusCode)
-            return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<List<Presets>>();
+                return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<List<Presets>>();
             else
                 throw new Exception();
         }
     }
+}

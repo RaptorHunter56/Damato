@@ -33,6 +33,7 @@ namespace Damato_App.UserControls
 
         private void NewPlan()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplatesControl));
             TableLayoutPanel tableLayoutPanel1x = new TableLayoutPanel();
             Button button7x = new Button();
             TextBox textBox1x = new TextBox();
@@ -101,8 +102,9 @@ namespace Damato_App.UserControls
             tableLayoutPanel1x.TabIndex = 1;
         }
 
-        private async Task button8_ClickAsync(object sender, EventArgs e)
+        private async void button8_ClickAsync(object sender, EventArgs e)
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplatesControl));
             string s = (((sender as Button).Parent as TableLayoutPanel).Controls[0] as TextBox).Text;
             string s2 = (((sender as Button).Parent as TableLayoutPanel).Controls[1] as TextBox).Text;
             ((sender as Button).Parent as TableLayoutPanel).Controls[0].Dispose();
