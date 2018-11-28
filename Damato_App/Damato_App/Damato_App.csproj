@@ -73,6 +73,7 @@
     <Compile Include="Cipher.cs" />
     <Compile Include="DataBase\Context.cs" />
     <Compile Include="DataBase\File.cs" />
+    <Compile Include="DataBase\Tags.cs" />
     <Compile Include="DataBase\User.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
