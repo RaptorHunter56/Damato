@@ -232,11 +232,18 @@ namespace Damato_API.Controllers
             }
             if (temp.Count() > 0)
                 files = temp;
+            List<File> filestemp = new List<File>();
             foreach (var item in search.Where(s => s[0] == '*'))
             {
-                files = files.Where(f => (f.MainTags.Where(g => g._Tag == item.Substring(1)).Count() > 0));
+                foreach (var item77 in files)
+                {
+                    if (item77.MainTags.ToList().Where(g => g._Tag == item.Substring(1)).Count() > 0)
+                        filestemp.Add(item77);
+                }
             }
-            foreach (var item in search.Where(s => s[0] != '.'))
+            if (filestemp.Count() > 0)
+                files = filestemp;
+            foreach (var item in search.Where(s => s[0] != '.' && s[0] != '*'))
             {
                 files = files.Where(f => (f.Path.Split('\\').Last().Contains(item)));
             }
