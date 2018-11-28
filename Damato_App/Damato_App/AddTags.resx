@@ -139,17 +139,17 @@
         uD7GLxz9cehj6OeLwVvqSVorwJBff2Ar4jjfQMobjQp55xkAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAPlJREFUWEft
+        lk0KwyAQhbMvXRbaXS8VCPmBkBv0Ir1bs2izLKT3aB14AyIhzBi1WfiBRJR572lELDKZXTMMwxFdb7w1
+        2ra9N03zrqrqiiE1VEsapIUhGV3XHUzhy7Qvffu+P2NKjDG92BqkiSkZZVmeTOEIAdVO8MpRO5IWpnT4
+        hAhmzmhCBDdnJCGimTNrIaKbM0shkpkzTogPWhpzBiEmGFObkpkTtO11Xc9WgNk+E1Fx/vkTjfqie2IT
+        SwfOORPxQiyZY0p0T2xizZyJFkJizgQPoTFngoXwMWc2h9jFg8RcNDcj8tCs3IV3grQwpOOvj9JMJg1F
+        8QPAniuZXf8u+wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="dragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAD5SURBVFhH7ZZNCsMgEIWzL10W2l0vFQj5gZAb9CK9W7Nosyyk92gdeAMiIcwYtVn4gUSUee9p
-        RCwymV0zDMMRXW+8Ndq2vTdN866q6oohNVRLGqSFIRld1x1M4cu0L337vj9jSowxvdgapIkpGWVZnkzh
-        CAHVTvDKUTuSFqZ0+IQIZs5oQgQ3ZyQhopkzayGimzNLIZKZM06ID1oacwYhJhhTm5KZE7TtdV3PVoDZ
-        PhNRcf75E436ontiE0sHzjkT8UIsmWNKdE9sYs2ciRZCYs4ED6ExZ4KF8DFnNofYxYPEXDQ3I/LQrNyF
-        d4K0MKTjr4/STCYNRfEDwJ4rmV3/LvsAAAAASUVORK5CYII=
-</value>
-  </data>
 </root>

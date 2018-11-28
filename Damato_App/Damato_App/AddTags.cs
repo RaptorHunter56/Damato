@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Damato_App.DataBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,7 @@ namespace Damato_App
         }
 
         private List<bool> temp1Text = new List<bool>() { true };
+        private List<string> temp2Text = new List<string>() { "Add Tag" };
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -41,7 +43,7 @@ namespace Damato_App
                 temp1Text[Int32.Parse(((sender as TextBox).Parent as TableLayoutPanel).Tag.ToString())] = true;
             if (temp1Text[Int32.Parse(((sender as TextBox).Parent as TableLayoutPanel).Tag.ToString())])
             {
-                (sender as TextBox).Text = "Add Tag";
+                (sender as TextBox).Text = temp2Text[Int32.Parse(((sender as TextBox).Parent as TableLayoutPanel).Tag.ToString())];
                 (sender as TextBox).Tag = null;
             }
         }
@@ -63,6 +65,7 @@ namespace Damato_App
         private void button3_Click(object sender, EventArgs e)
         {
             temp1Text.Add(false);
+            temp2Text.Add("Add Tag");
             Ccount++;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTags));
 
@@ -134,7 +137,7 @@ namespace Damato_App
             foreach (var item in flowLayoutPanel1.Controls)
             {
                 string s = ((item as TableLayoutPanel).Controls[0] as TextBox).Text;
-                if (s.Trim() != "" && s.Trim() != "Add Tag")
+                if (s.Trim() != "" && s.Trim() != temp2Text[Int32.Parse(((sender as TextBox).Parent as TableLayoutPanel).Tag.ToString())])
                     vs.Add(s.Trim());
                 else
                 {
@@ -144,6 +147,77 @@ namespace Damato_App
             }
             vss = vs;
             this.Close();
+        }
+
+        public string Token { get; set; }
+        private void AddTags_Load(object sender, EventArgs e)
+        {
+            MethodInvoker methodInvokerDelegate = async delegate ()
+            {
+                var sss = await API.GetPresetss(Token, "");
+                foreach (var item in sss)
+                {
+                    comboBox1.Items.Add(item);
+                }
+                this.Cursor = Cursors.Default;
+            };
+
+            if (this.InvokeRequired)
+                this.Invoke(methodInvokerDelegate);
+            else
+                methodInvokerDelegate();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var item in (comboBox1.SelectedItem as Presets).Feleds.Split('*'))
+            {
+                Ccount++;
+                TableLayoutPanel tableLayoutPanel2xx = new TableLayoutPanel();
+                TextBox textBox1xx = new TextBox();
+                tableLayoutPanel2xx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+                tableLayoutPanel2xx.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+                tableLayoutPanel2xx.ColumnCount = 3;
+                tableLayoutPanel2xx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+                tableLayoutPanel2xx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+                tableLayoutPanel2xx.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+                tableLayoutPanel2xx.Controls.Add(textBox1xx, 1, 0);
+                tableLayoutPanel2xx.Location = new System.Drawing.Point(3, 3);
+                tableLayoutPanel2xx.Name = "tableLayoutPanel2";
+                tableLayoutPanel2xx.RowCount = 1;
+                tableLayoutPanel2xx.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+                tableLayoutPanel2xx.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+                tableLayoutPanel2xx.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+                tableLayoutPanel2xx.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+                tableLayoutPanel2xx.Size = new System.Drawing.Size(441, 30);
+                tableLayoutPanel2xx.TabIndex = 11;
+                tableLayoutPanel2xx.Tag = Ccount;
+                // 
+                // textBox1
+                // 
+                textBox1xx.Anchor = System.Windows.Forms.AnchorStyles.None;
+                textBox1xx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+                textBox1xx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                textBox1xx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+                textBox1xx.ForeColor = System.Drawing.Color.DarkGray;
+                textBox1xx.Location = new System.Drawing.Point(19, 7);
+                textBox1xx.MaxLength = 20;
+                textBox1xx.Name = "textBox1";
+                textBox1xx.Size = new System.Drawing.Size(403, 16);
+                textBox1xx.TabIndex = 7;
+                textBox1xx.Text = item;
+                textBox1xx.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+                textBox1xx.Enter += new System.EventHandler(this.textBox1_Enter);
+                textBox1xx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+                textBox1xx.Leave += new System.EventHandler(this.textBox1_Leave);
+                this.flowLayoutPanel1.Controls.Add(tableLayoutPanel2xx);
+
+                temp1Text.Add(false);
+                temp2Text.Add(item);
+                flowLayoutPanel1.Refresh();
+            }
+            
         }
     }
 }

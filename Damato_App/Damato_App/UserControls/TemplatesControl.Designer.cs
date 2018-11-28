@@ -120,6 +120,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "TemplatesControl";
             this.Size = new System.Drawing.Size(455, 227);
+            this.Load += new System.EventHandler(this.TemplatesControl_Load);
             this.ResumeLayout(false);
 
         }

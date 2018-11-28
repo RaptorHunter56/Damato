@@ -11,5 +11,10 @@ namespace Damato_App.DataBase
         public int ID { get; set; }
         public string Name { get; set; }
         public string Feleds { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

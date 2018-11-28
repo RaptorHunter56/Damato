@@ -79,7 +79,7 @@ namespace Damato_API.Controllers
         }
 
         // POST: api/Presets
-        [HttpGet, Route("{token}/PostPresets")]
+        [HttpPost, Route("{token}/PostPresets")]
         [ResponseType(typeof(Presets))]
         public IHttpActionResult PostPresets(string token, Presets presets)
         {
@@ -95,12 +95,13 @@ namespace Damato_API.Controllers
 
             db.Presetss.Add(presets);
             db.SaveChanges();
+            db.Entry(presets).GetDatabaseValues();
 
-            return CreatedAtRoute("DefaultApi", new { id = presets.ID }, presets);
+            return Ok(presets);
         }
 
         // DELETE: api/Presets/5
-        [HttpGet, Route("{token}/DeletePresets/{id}")]
+        [HttpDelete, Route("{token}/DeletePresets/{id}")]
         [ResponseType(typeof(Presets))]
         public IHttpActionResult DeletePresets(string token, int id)
         {

@@ -116,9 +116,10 @@ namespace Damato_App
                 this.Cursor = Cursors.WaitCursor;
                 MethodInvoker methodInvokerDelegate = async delegate ()
                 {
-                    AddTags a = new AddTags() { TopText = item };
+                    AddTags a = new AddTags() { TopText = item, Token = Token };
                     a.ShowDialog();
-
+                    if (a.vss.Count() == 0)
+                        return;
                     try
                     {
                         await API.UploadFile(Token, item, a.vss);
@@ -1031,17 +1032,21 @@ namespace Damato_App
         public static async Task<bool> DeletePresets(string token, string filename, string filepath)
         {
             //api/Files/0132995%2B13/DownloadFile?filename=2.txt
-            HttpResponseMessage response = await _api.GetAsync($"Presets/{token}/DeletePresets/{filename}");
+            HttpResponseMessage response = await _api.DeleteAsync($"Presets/{token}/DeletePresets/{filename}");
             // 
             return true;
         }
 
         public static async Task<int> PostPresets(string token, string filename, Presets filepath)
         {
-            //api/Files/0132995%2B13/DownloadFile?filename=2.txt
-            HttpResponseMessage response = await _api.PostAsync($"Presets/{token}/PostPresets", new StringContent(JArray.FromObject(filepath).ToString()));
+            //{ "Name": "Passport", "Feleds": "Name*DOB*ID_No." }
+            HttpContent s = new StringContent($"{"{"} \"Name\": \"{filepath.Name}\", \"Feleds\": \"{filepath.Feleds}\" {"}"}", Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _api.PostAsync($"Presets/{token}/PostPresets", s);
             if (response.IsSuccessStatusCode)
-                return JArray.Parse((await response.Content.ReadAsStringAsync())).ToObject<Presets>().ID;
+            {
+                string dd = await response.Content.ReadAsStringAsync();
+                return Int32.Parse(dd.Split('"')[2].Trim(',').Trim(':'));
+            }
             else
                 throw new Exception();
 
