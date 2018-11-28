@@ -17,7 +17,7 @@ namespace Damato_API.Controllers
     [RoutePrefix("api/Files")]
     public class FilesController : ApiController
     {
-        public static string PathLocation = @"D:\home\site\wwwroot\Damato_API";
+        public static string PathLocation = @"D:\home\Offical_Folder";
 
         // GET: api/Files/2460348+13/GetRecentFiles
         [HttpGet, Route("{token}/GetRecentFiles")]
