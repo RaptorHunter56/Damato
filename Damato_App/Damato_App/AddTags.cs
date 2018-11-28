@@ -137,7 +137,7 @@ namespace Damato_App
             foreach (var item in flowLayoutPanel1.Controls)
             {
                 string s = ((item as TableLayoutPanel).Controls[0] as TextBox).Text;
-                if (s.Trim() != "" && s.Trim() != temp2Text[Int32.Parse(((sender as TextBox).Parent as TableLayoutPanel).Tag.ToString())])
+                if (s.Trim() != "" && s.Trim() != temp2Text[Int32.Parse((item as TableLayoutPanel).Tag.ToString())])
                     vs.Add(s.Trim());
                 else
                 {
